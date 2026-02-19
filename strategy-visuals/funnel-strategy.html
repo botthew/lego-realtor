@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Funnel Strategy | The LEGO Realtor & Bethesda Brokers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --bethesda-gold: #C9A227;
+            --bethesda-dark: #1a1a1a;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d0d0d0;
+            --gray-400: #a0a0a0;
+            --gray-500: #808080;
+            --gray-600: #666666;
+            --gray-700: #4a4a4a;
+            --gray-800: #333333;
+            --gray-900: #1a1a1a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 50%, var(--gray-100) 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            padding: 60px 24px 80px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--white);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-200);
+        }
+
+        .header h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Funnel Container */
+        .funnel-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .funnel-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        /* Funnel Card */
+        .funnel-card {
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-200);
+        }
+
+        .funnel-header {
+            padding: 36px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .funnel-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .funnel-header.lego::after {
+            background: linear-gradient(90deg, var(--lego-red), var(--lego-yellow), var(--lego-blue));
+        }
+
+        .funnel-header.bethesda::after {
+            background: linear-gradient(90deg, var(--bethesda-dark), var(--bethesda-gold));
+        }
+
+        .funnel-header.lego {
+            background: linear-gradient(180deg, rgba(201, 26, 9, 0.03) 0%, var(--white) 100%);
+        }
+
+        .funnel-header.bethesda {
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.03) 0%, var(--white) 100%);
+        }
+
+        .funnel-header h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .funnel-header.lego h2 span {
+            color: var(--lego-red);
+        }
+
+        .funnel-header.bethesda h2 span {
+            color: var(--bethesda-gold);
+        }
+
+        .funnel-header p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .funnel-header .brand-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+        }
+
+        .funnel-header.lego .brand-tag {
+            background: var(--lego-red);
+            color: var(--white);
+        }
+
+        .funnel-header.bethesda .brand-tag {
+            background: var(--bethesda-dark);
+            color: var(--white);
+        }
+
+        /* Funnel Steps */
+        .funnel-steps {
+            padding: 32px;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateX(8px);
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 56px;
+            width: 2px;
+            height: calc(100% - 16px);
+            background: linear-gradient(180deg, var(--gray-300), var(--gray-200));
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .step.lego .step-number {
+            background: linear-gradient(135deg, var(--lego-red), #e01a00);
+        }
+
+        .step.bethesda .step-number {
+            background: linear-gradient(135deg, var(--gray-900), var(--gray-700));
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 4px;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
+        }
+
+        .step-content p {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .step-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--gray-300);
+            font-size: 1rem;
+            padding-left: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+
+        /* Goal Box */
+        .goal-box {
+            margin: 16px 32px 32px;
+            padding: 24px 28px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .goal-box.lego {
+            background: linear-gradient(135deg, rgba(201, 26, 9, 0.05), rgba(201, 26, 9, 0.1));
+            border: 1px solid rgba(201, 26, 9, 0.15);
+        }
+
+        .goal-box.bethesda {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05), rgba(201, 162, 39, 0.1));
+            border: 1px solid rgba(201, 162, 39, 0.15);
+        }
+
+        .goal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .goal-box.lego .goal-icon {
+            background: var(--lego-red);
+        }
+
+        .goal-box.bethesda .goal-icon {
+            background: var(--bethesda-dark);
+        }
+
+        .goal-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .goal-text h5 {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-500);
+            margin-bottom: 4px;
+        }
+
+        .goal-text p {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .goal-box.lego .goal-text p {
+            color: var(--lego-red);
+        }
+
+        .goal-box.bethesda .goal-text p {
+            color: var(--bethesda-dark);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px 48px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--gray-200);
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            color: var(--gray-500);
+            margin-bottom: 36px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.lego {
+            background: var(--lego-red);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(201, 26, 9, 0.3);
+        }
+
+        .cta-btn.lego:hover {
+            background: #a01608;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 26, 9, 0.4);
+        }
+
+        .cta-btn.bethesda {
+            background: var(--bethesda-dark);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(26, 26, 26, 0.3);
+        }
+
+        .cta-btn.bethesda:hover {
+            background: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 26, 26, 0.4);
+        }
+
+        .cta-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding: 40px 24px;
+            text-align: center;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+            color: var(--gray-400);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 40px 16px 60px;
+            }
+
+            .header {
+                margin-bottom: 60px;
+            }
+
+            .funnel-header {
+                padding: 28px 24px;
+            }
+
+            .funnel-steps {
+                padding: 24px;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .step:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-arrow {
+                display: none;
+            }
+
+            .cta-section {
+                margin-top: 60px;
+                padding: 40px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                justify-content: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-badge">Strategy Blueprint</div>
+            <h1>Content Funnel Strategy</h1>
+            <p>Two complementary brands working together to attract, nurture, and convert DMV homeowners into loyal clients.</p>
+        </header>
+
+        <!-- Funnel Container -->
+        <div class="funnel-container">
+            <!-- LEGO Realtor Funnel -->
+            <div class="funnel-card">
+                <div class="funnel-header lego">
+                    <div class="brand-tag">Top of Funnel</div>
+                    <h2>The <span style="color: var(--lego-yellow);">LEGO</span> Realtor</h2>
+                    <p>Attraction & Authority Building</p>
+                </div>
+                <div class="funnel-steps">
+                    <!-- Step 1 -->
+                    <div class="step lego">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>📘 The DMV Buyer Blueprint</h4>
+                            <p>Free comprehensive guide attracting first-time buyers with valuable, educational content.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 2 -->
+                    <div class="step lego">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>📋 7 Days to Closing Checklist</h4>
+                            <p>Nurture sequence providing practical value during the transaction process.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 3 -->
+                    <div class="step lego">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>📊 Neighborhood Hot Sheet</h4>
+                            <p>Monthly market data reports keeping subscribers engaged with ongoing value.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 4 -->
+                    <div class="step lego">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>🏠 Open House Survival Guide</h4>
+                            <p>Actionable tips for buyers actively touring homes, building trust and rapport.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="goal-box lego">
+                    <div class="goal-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="goal-text">
+                        <h5>Primary Goal</h5>
+                        <p>Listing Consultation</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bethesda Brokers Funnel -->
+            <div class="funnel-card">
+                <div class="funnel-header bethesda">
+                    <div class="brand-tag">High-Value Conversion</div>
+                    <h2>Bethesda <span style="color: var(--bethesda-gold);">Brokers</span></h2>
+                    <p>Premium Service Positioning</p>
+                </div>
+                <div class="funnel-steps">
+                    <!-- Step 1 -->
+                    <div class="step bethesda">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>⚖️ Legal Loopholes Report</h4>
+                            <p>Free report showcasing expertise in finding value and avoiding pitfalls.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 2 -->
+                    <div class="step bethesda">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>📈 Weekly DMV Updates</h4>
+                            <p>Friday anchor email providing market intelligence and positioning as expert.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 3 -->
+                    <div class="step bethesda">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>🎬 Expert Reacts Series</h4>
+                            <p>Video content reviewing contracts and documents, demonstrating authority.</p>
+                        </div>
+                    </div>
+                    <div class="step-arrow">↓</div>
+                    <!-- Step 4 -->
+                    <div class="step bethesda">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>🏆 Client Case Studies</h4>
+                            <p>Success stories proving results and building social proof.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="goal-box bethesda">
+                    <div class="goal-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="goal-text">
+                        <h5>Primary Goal</h5>
+                        <p>Premium Service Booking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3>Ready to Build Your Funnel?</h3>
+            <p>Let's create compelling content that converts.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn lego">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Start with LEGO Realtor
+                </a>
+                <a href="#" class="cta-btn bethesda">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Explore Bethesda Brokers
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Content Funnel Strategy • The LEGO Realtor & Bethesda Brokers</p>
+        </footer>
+    </div>
+</body>
+</html>
