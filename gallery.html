@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The LEGO Realtor | Brand Assets Gallery</title>
     <style>
-        /* CSS Reset & Base */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -16,13 +15,12 @@
             --lego-red: #C91A09;
             --lego-yellow: #FFD500;
             --lego-blue: #0055BF;
-            --dark: #0f0f0f;
-            --dark-secondary: #1a1a1a;
-            --dark-tertiary: #2a2a2a;
-            --gray: #888;
-            --gray-light: #ccc;
             --white: #ffffff;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --off-white: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #666666;
+            --gray-800: #333333;
         }
 
         html {
@@ -30,35 +28,75 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--dark);
-            color: var(--gray-light);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--off-white);
+            color: var(--gray-800);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            padding-bottom: 80px;
         }
 
-        /* Navigation */
+        .hero {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
+            padding: 80px 24px 60px;
+            text-align: center;
+            border-bottom: 3px solid var(--lego-yellow);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 10px 24px;
+            background: var(--lego-red);
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(201, 26, 9, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--lego-red);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .nav {
-            position: fixed;
+            background: var(--white);
+            padding: 16px 24px;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 40px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 15, 15, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .nav-logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #1a1a1a;
             text-decoration: none;
-            letter-spacing: -0.5px;
         }
 
         .nav-logo span {
@@ -72,156 +110,48 @@
         }
 
         .nav-links a {
-            color: var(--gray-light);
+            color: var(--gray-600);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
+            font-weight: 600;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--white);
-        }
-
-        .nav-cta {
-            padding: 10px 24px;
-            background: var(--lego-red);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .nav-cta:hover {
-            background: #a01608;
-            transform: translateY(-1px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 140px 24px 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(201, 26, 9, 0.08) 0%, transparent 40%),
-                        radial-gradient(circle at 70% 80%, rgba(0, 85, 191, 0.08) 0%, transparent 40%);
-            animation: heroGlow 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroGlow {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-2%, 2%) rotate(1deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 32px;
-        }
-
-        .hero-badge::before {
-            content: '◆';
             color: var(--lego-red);
-            font-size: 0.6rem;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-top: 4px;
-        }
-
-        /* Section Styling */
         .section {
-            padding: 100px 24px;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 60px 24px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
 
         .section-label {
-            font-size: 0.8rem;
-            font-weight: 600;
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--lego-yellow);
+            color: #1a1a1a;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--lego-yellow);
             margin-bottom: 16px;
         }
 
         .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: -1px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
         }
 
-        /* Grid Layouts */
         .grid {
             display: grid;
             gap: 24px;
@@ -235,32 +165,35 @@
             grid-template-columns: repeat(4, 1fr);
         }
 
-        /* Card Styles */
         .card {
-            background: var(--dark-secondary);
-            border-radius: 16px;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .card-image {
+            width: 100%;
             aspect-ratio: 16/10;
             overflow: hidden;
-            position: relative;
-            background: var(--dark-tertiary);
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
         .card:hover .card-image img {
@@ -268,36 +201,62 @@
         }
 
         .card-content {
-            padding: 28px;
+            padding: 24px;
         }
 
         .card-content h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
         }
 
         .card-content p {
             font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.6;
-            margin-bottom: 20px;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: 16px;
         }
 
-        /* Logo Card Special */
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--lego-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .download-link:hover {
+            background: #3373CC;
+            transform: translateY(-2px);
+        }
+
+        .download-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .logo-section {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
+            border-bottom: 3px solid var(--lego-red);
+        }
+
         .logo-card {
             grid-column: span 2;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .logo-card .card-image {
             aspect-ratio: 3/1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px;
-            background: linear-gradient(135deg, var(--dark-secondary) 0%, var(--dark-tertiary) 100%);
+            padding: 40px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
         }
 
         .logo-card .card-image img {
@@ -305,265 +264,335 @@
             max-height: 100%;
             width: auto;
             height: auto;
+            object-fit: contain;
         }
 
-        /* Download Button */
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 8px;
+        .lead-magnet-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .lead-magnet-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .lead-magnet-card .card-image {
+            aspect-ratio: 1/1;
+            width: 100%;
+            background: var(--white);
+            padding: 15px;
+        }
+
+        .lead-magnet-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .lead-magnet-card .card-content {
+            padding: 20px;
+            background: var(--white);
+        }
+
+        .lead-magnet-card .card-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .lead-magnet-card .card-content p {
             font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
 
-        .download-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.15);
+        .lead-magnet-card .download-link {
+            width: 100%;
+            justify-content: center;
+            padding: 12px;
         }
 
-        .download-btn svg {
-            width: 16px;
-            height: 16px;
+        .pillar-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
         }
 
-        /* Footer */
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .pillar-card .card-image {
+            aspect-ratio: 4/3;
+        }
+
+        .pillar-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pillar-card .card-content {
+            padding: 20px;
+        }
+
+        .pillar-card .card-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .pillar-card .card-content p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+
         .footer {
-            padding: 80px 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
             text-align: center;
-            background: var(--dark-secondary);
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 60px 24px;
+            background: var(--white);
+            border-top: 3px solid var(--lego-yellow);
         }
 
         .footer h3 {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 16px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 12px;
         }
 
         .footer p {
-            color: var(--gray);
-            margin-bottom: 32px;
+            color: var(--gray-600);
+            margin-bottom: 24px;
         }
 
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 32px;
+            gap: 24px;
         }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--gray-600);
             text-decoration: none;
             font-size: 0.9rem;
-            transition: var(--transition);
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
-            color: var(--white);
+            color: var(--lego-red);
         }
 
-        /* Mobile Navigation Toggle */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .nav-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--white);
-            transition: var(--transition);
-        }
-
-        /* Responsive Styles */
         @media (max-width: 1024px) {
             .grid-4 {
                 grid-template-columns: repeat(2, 1fr);
             }
 
             .logo-card {
-                grid-column: span 2;
+                grid-column: span 1;
+                max-width: 100%;
             }
         }
 
         @media (max-width: 768px) {
-            .nav {
-                padding: 16px 20px;
-            }
-
-            .nav-links, .nav-cta {
+            .nav-links {
                 display: none;
             }
 
-            .nav-toggle {
-                display: flex;
-            }
-
             .hero {
-                min-height: 60vh;
-                padding: 120px 20px 60px;
-            }
-
-            .hero-stats {
-                gap: 30px;
-            }
-
-            .stat-value {
-                font-size: 1.5rem;
-            }
-
-            .section {
-                padding: 60px 20px;
+                padding: 60px 20px 40px;
             }
 
             .grid-2, .grid-4 {
                 grid-template-columns: 1fr;
             }
 
-            .logo-card {
-                grid-column: span 1;
-            }
-
             .logo-card .card-image {
                 aspect-ratio: 16/9;
-                padding: 40px;
+                padding: 30px;
             }
 
-            .card-content {
-                padding: 20px;
+            .lead-magnet-card .card-image {
+                aspect-ratio: 4/3;
+                padding: 12px;
             }
 
             .footer-links {
                 flex-direction: column;
-                gap: 16px;
+                gap: 12px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero-stats {
-                flex-direction: column;
-                gap: 24px;
+            .section {
+                padding: 40px 16px;
             }
 
-            .hero h1 {
-                letter-spacing: -1px;
+            .card-content {
+                padding: 16px;
+            }
+
+            .lead-magnet-card .card-content {
+                padding: 16px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="#" class="nav-logo">The <span>LEGO</span> Realtor</a>
-        <ul class="nav-links">
-            <li><a href="#brand">Brand Assets</a></li>
-            <li><a href="#lead-magnets">Lead Magnets</a></li>
-            <li><a href="#content">Content Pillars</a></li>
-            <li><a href="#websites">Websites</a></li>
-        </ul>
-        <a href="#contact" class="nav-cta">Get in Touch</a>
-        <button class="nav-toggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </nav>
-
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Brand Asset Library</div>
-            <h1>The LEGO Realtor<br><span style="color: var(--lego-red);">Visual Identity</span></h1>
-            <p>A cohesive brand ecosystem for DMV real estate. Professional, playful, and built to convert.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">4</div>
-                    <div class="stat-label">Lead Magnets</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">4</div>
-                    <div class="stat-label">Content Pillars</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">4</div>
-                    <div class="stat-label">Website Concepts</div>
-                </div>
-            </div>
+            <div class="hero-badge">Brand Assets Library</div>
+            <h1>The LEGO Realtor</h1>
+            <p>A complete visual identity system for DMV real estate. Professional, playful, and built to connect.</p>
         </div>
     </section>
 
-    <!-- Brand Logo Section -->
-    <section id="brand" class="section">
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">The LEGO Realtor</a>
+            <ul class="nav-links">
+                <li><a href="#logo">Logo</a></li>
+                <li><a href="#lead-magnets">Lead Magnets</a></li>
+                <li><a href="#content">Content Pillars</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="logo" class="section logo-section">
         <div class="section-header">
             <div class="section-label">Brand Identity</div>
-            <h2 class="section-title">Logo & Visual Assets</h2>
+            <h2 class="section-title">Primary Logo</h2>
         </div>
         <div class="grid grid-2">
             <div class="card logo-card">
                 <div class="card-image">
-                    <img src="the-lego-realtor-logo.png" alt="The LEGO Realtor Primary Logo">
+                    <img src="the-lego-realtor-logo.png" alt="The LEGO Realtor Logo">
                 </div>
                 <div class="card-content">
                     <h3>Primary Logo</h3>
-                    <p>The core brand mark combining LEGO's iconic aesthetic with professional real estate positioning. Works on light and dark backgrounds.</p>
-                    <a href="the-lego-realtor-logo.png" class="download-btn" download>
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                        </svg>
-                        Download PNG
-                    </a>
+                    <p>The core brand mark combining LEGO's iconic aesthetic with professional real estate positioning.</p>
+                    <a href="the-lego-realtor-logo.png" class="download-link" download>Download PNG</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lead Magnets Section -->
     <section id="lead-magnets" class="section">
         <div class="section-header">
             <div class="section-label">Free Resources</div>
             <h2 class="section-title">Lead Magnet Covers</h2>
         </div>
-        <div class="grid grid-2">
-            <div class="card">
+        <div class="grid grid-4">
+            <div class="lead-magnet-card">
                 <div class="card-image">
                     <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint">
                 </div>
                 <div class="card-content">
-                    <h3>The DMV Buyer Blueprint</h3>
-                    <p>Complete home buying guide for Washington DC, Maryland, and Virginia. Financing, neighborhoods, and closing — all covered.</p>
-                    <a href="lead-magnets/01-dmv-buyer-blueprint.png" class="download-btn" download>
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                        </svg>
-                        Download
-                    </a>
+                    <h4>1. The DMV Buyer Blueprint</h4>
+                    <p>Complete home buying guide for DC, MD, and VA.</p>
+                    <a href="lead-magnets/01-dmv-buyer-blueprint.png" class="download-link" download>Download</a>
                 </div>
             </div>
-            <div class="card">
+            <div class="lead-magnet-card">
                 <div class="card-image">
                     <img src="lead-magnets/02-7-days-to-closing.png" alt="7 Days to Closing">
                 </div>
                 <div class="card-content">
-                    <h3>7 Days to Closing</h3>
-                    <p>Essential countdown checklist for the final week before settlement. Wire fraud protection, document review, and final walkthrough.</p>
-                    <a href="lead-magnets/02-7-days-to-closing.png" class="download-btn" download>
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4
+                    <h4>2. 7 Days to Closing</h4>
+                    <p>Essential countdown checklist before settlement.</p>
+                    <a href="lead-magnets/02-7-days-to-closing.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+            <div class="lead-magnet-card">
+                <div class="card-image">
+                    <img src="lead-magnets/03-neighborhood-hot-sheet.png" alt="Neighborhood Hot Sheet">
+                </div>
+                <div class="card-content">
+                    <h4>3. Neighborhood Hot Sheet</h4>
+                    <p>Monthly market data reports for DMV neighborhoods.</p>
+                    <a href="lead-magnets/03-neighborhood-hot-sheet.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+            <div class="lead-magnet-card">
+                <div class="card-image">
+                    <img src="lead-magnets/04-open-house-survival-guide.png" alt="Open House Survival Guide">
+                </div>
+                <div class="card-content">
+                    <h4>4. Open House Survival Guide</h4>
+                    <p>Pro tips for navigating open houses like a pro.</p>
+                    <a href="lead-magnets/04-open-house-survival-guide.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="content" class="section">
+        <div class="section-header">
+            <div class="section-label">Content Strategy</div>
+            <h2 class="section-title">Content Pillar Images</h2>
+        </div>
+        <div class="grid grid-2">
+            <div class="pillar-card">
+                <div class="card-image">
+                    <img src="content-pillars/pillar-market-hot-takes.png" alt="Market Hot Takes">
+                </div>
+                <div class="card-content">
+                    <h4>Market Hot Takes</h4>
+                    <p>Real estate market analysis and commentary.</p>
+                    <a href="content-pillars/pillar-market-hot-takes.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+            <div class="pillar-card">
+                <div class="card-image">
+                    <img src="content-pillars/pillar-property-tours.png" alt="Property Tours">
+                </div>
+                <div class="card-content">
+                    <h4>Property Tours</h4>
+                    <p>Virtual walkthroughs and property showcases.</p>
+                    <a href="content-pillars/pillar-property-tours.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+            <div class="pillar-card">
+                <div class="card-image                    <img src="content-pillars/pillar-client-wins.png" alt="Client Wins">
+                </div>
+                <div class="card-content">
+                    <h4>Client Wins</h4>
+                    <p>Success stories and testimonials from happy clients.</p>
+                    <a href="content-pillars/pillar-client-wins.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+            <div class="pillar-card">
+                <div class="card-image">
+                    <img src="content-pillars/pillar-home-tips.png" alt="Home Tips">
+                </div>
+                <div class="card-content">
+                    <h4>Home Tips</h4>
+                    <p>Practical advice for homeowners and buyers.</p>
+                    <a href="content-pillars/pillar-home-tips.png" class="download-link" download>Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h3>The LEGO Realtor</h3>
+        <p>Building stronger communities one neighborhood at a time.</p>
+        <div class="footer-links">
+            <a href="#">View on GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
