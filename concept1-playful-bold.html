@@ -127,6 +127,19 @@
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
+        .hero-logo {
+            max-width: 300px;
+            margin: 0 auto 30px;
+            display: block;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(201, 26, 9, 0.3);
+        }
+
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -333,6 +346,15 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        /* Lead Magnet Preview Image */
+        .lead-magnet-preview {
+            max-width: 400px;
+            margin: 30px auto 0;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
         /* Social Section */
         .social-section {
             padding: 80px 50px;
@@ -471,6 +493,9 @@
             <div class="brick brick-6"></div>
         </div>
         <div class="hero-content">
+            <div class="hero-logo">
+                <img src="the-lego-realtor-logo.png" alt="The LEGO Realtor Logo">
+            </div>
             <h1>
                 <span class="lego-text">BUILD</span>
                 <span class="realtor-text">YOUR DREAM</span><br>
@@ -515,6 +540,7 @@
     <section class="lead-magnet">
         <h2>🎁 Free Home Buyer Guide!</h2>
         <p>Get our comprehensive guide to buying your first home in the DMV area. Packed with tips, checklists, and insider knowledge!</p>
+        <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint Lead Magnet" class="lead-magnet-preview">
         <form class="signup-form">
             <input type="email" placeholder="Enter your email address" required>
             <button type="submit">Get My Free Guide!</button>

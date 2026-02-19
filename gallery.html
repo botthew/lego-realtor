@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LEGO Realtor | Visual Asset Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--lego-red), var(--lego-yellow));
+            border-radius: 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--lego-yellow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .gallery-item .caption {
+            padding: 25px;
+            color: var(--dark);
+        }
+
+        .gallery-item .caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--lego-red);
+        }
+
+        .gallery-item .caption p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .download-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--lego-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .download-link:hover {
+            background: #004499;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 3px solid var(--lego-yellow);
+        }
+
+        .footer a {
+            color: var(--lego-yellow);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧱 The LEGO Realtor</h1>
+        <p>Visual Asset Gallery — Generated via OpenRouter + Gemini 2.5 Flash Image</p>
+    </div>
+
+    <!-- Logo -->
+    <section class="section">
+        <h2 class="section-title">🎯 Brand Logo</h2>
+        <div class="gallery" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
+            <div class="gallery-item">
+                <img src="the-lego-realtor-logo.png" alt="The LEGO Realtor Logo">
+                <div class="caption">
+                    <h3>The LEGO Realtor Logo</h3>
+                    <p>Professional real estate logo combining LEGO brick aesthetic with real estate iconography. Playful yet professional design using iconic red, yellow, and blue LEGO colors.</p>
+                    <a href="the-lego-realtor-logo.png" class="download-link" download>⬇️ Download PNG</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnets -->
+    <section class="section">
+        <h2 class="section-title">📚 Lead Magnet Covers</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint">
+                <div class="caption">
+                    <h3>1. The DMV Buyer Blueprint</h3>
+                    <p>Comprehensive guide for first-time home buyers in Washington DC, Maryland, and Virginia. Covers financing, neighborhood selection, and closing process.</p>
+                    <a href="lead-magnets/01-dmv-buyer-blueprint.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="lead-magnets/02-7-days-to-closing.png" alt="7 Days to Closing">
+                <div class="caption">
+                    <h3>2. 7 Days to Closing Checklist</h3>
+                    <p>Essential countdown checklist ensuring nothing falls through the cracks in the final week before closing. Your roadmap to a smooth settlement.</p>
+                    <a href="lead-magnets/02-7-days-to-closing.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="lead-magnets/03-neighborhood-hot-sheet.png" alt="Neighborhood Hot Sheet">
+                <div class="caption">
+                    <h3>3. Neighborhood Hot Sheet</h3>
+                    <p>Exclusive monthly market data reports for DC/MD/VA neighborhoods. Includes sales trends, price comparisons, and inventory analysis.</p>
+                    <a href="lead-magnets/03-neighborhood-hot-sheet.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="lead-magnets/04-open-house-survival-guide.png" alt="Open House Survival Guide">
+                <div class="caption">
+                    <h3>4. Open House Survival Guide</h3>
+                    <p>Pro tips for home buyers navigating open houses. What to look for, questions to ask, and how to stand out in competitive markets.</p>
+                    <a href="lead-magnets/04-open-house-survival-guide.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Pillars -->
+    <section class="section">
+        <h2 class="section-title">📱 Content Pillar Images</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="content-pillars/pillar-market-hot-takes.png" alt="Market Hot Takes">
+                <div class="caption">
+                    <h3>Market Hot Takes</h3>
+                    <p>Real estate market analysis and commentary. Breaking down trends, data, and predictions for the DMV housing market.</p>
+                    <a href="content-pillars/pillar-market-hot-takes.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="content-pillars/pillar-property-tours.png" alt="Property Tours">
+                <div class="caption">
+                    <h3>Property Tours</h3>
+                    <p>Virtual walkthroughs and showcases of featured listings. Highlighting unique features and investment potential.</p>
+                    <a href="content-pillars/pillar-property-tours.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="content-pillars/pillar-client-wins.png" alt="Client Wins">
+                <div class="caption">
+                    <h3>Client Wins</h3>
+                    <p>Celebrating successful transactions and happy homeowners. Testimonials and success stories from satisfied clients.</p>
+                    <a href="content-pillars/pillar-client-wins.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="content-pillars/pillar-home-tips.png" alt="Home Tips">
+                <div class="caption">
+                    <h3>Home Tips</h3>
+                    <p>Practical DIY advice, maintenance tips, and home improvement ideas. Helping homeowners protect their investment.</p>
+                    <a href="content-pillars/pillar-home-tips.png" class="download-link" download>⬇️ Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>🚀 Generated with OpenRouter + Gemini 2.5 Flash Image</p>
+        <p><a href="https://github.com/botthew/lego-realtor">View on GitHub →</a></p>
+    </div>
+</body>
+</html>
