@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neighborhood Hot Sheet | Exclusive DMV Market Data | The LEGO Realtor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--lego-blue);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a2744 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--lego-blue);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 85, 191, 0.3);
+        }
+
+        .subscribe-section {
+            padding: 100px 50px;
+            background: var(--white);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .subscribe-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .subscribe-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .subscribe-form input {
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .subscribe-form button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--lego-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            padding: 100px 50px;
+            background: var(--dark);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--lego-blue);
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+        }
+
+        .sample-section {
+            padding: 100px 50px;
+            background: #1a2744;
+            text-align: center;
+        }
+
+        .sample-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .sample-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .sample-preview {
+            background: var(--white);
+            color: var(--dark);
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .sample-header {
+            background: var(--lego-blue);
+            color: var(--white);
+            padding: 30px;
+        }
+
+        .sample-header h3 {
+            font-size: 1.5rem;
+        }
+
+        .sample-content {
+            padding: 40px;
+            text-align: left;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat-label {
+            font-weight: 600;
+        }
+
+        .stat-value {
+            color: var(--lego-blue);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">The LEGO <span>Realtor</span></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Exclusive Market Data for <span>DMV</span> Neighborhoods</h1>
+                <p>Monthly reports showing sales trends, price changes, and inventory data you won't find on Zillow.</p>
+                <a href="#subscribe" class="btn" style="background: var(--lego-blue); color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: 700;">Subscribe Free ↓</a>
+            </div>
+            <div class="hero-image">
+                <img src="lead-magnets/03-neighborhood-hot-sheet.png" alt="Neighborhood Hot Sheet">
+            </div>
+        </div>
+    </section>
+
+    <section class="sample-section">
+        <h2>What's in a <span style="color: var(--lego-blue);">Hot Sheet</span> Report?</h2>
+        <p>Every month, receive a comprehensive breakdown of your favorite neighborhoods.</p>
+        
+        <div class="sample-preview">
+            <div class="sample-header">
+                <h3>📍 Capitol Hill — January 2026</h3>
+            </div>
+            <div class="sample-content">
+                <div class="stat-row">
+                    <span class="stat-label">Median Sale Price</span>
+                    <span class="stat-value">$725,000</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Avg Days on Market</span>
+                    <span class="stat-value">18 days ↓</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Homes Sold</span>
+                    <span class="stat-value">47 (+12%)</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Inventory Level</span>
+                    <span class="stat-value">Low</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Price Forecast</span>
+                    <span class="stat-value" style="color: var(--lego-red);">↑ 3-5% next 90 days</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe-section" id="subscribe">
+        <div class="subscribe-container">
+            <h2>Get Your Free <span style="color: var(--lego-blue);">Neighborhood Hot Sheet</span></h2>
+            <p>Reports delivered to your inbox on the 1st of every month. Choose up to 3 neighborhoods.</p>
+            <form class="subscribe-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Favorite Neighborhoods (e.g., Capitol Hill, Arlington, Bethesda)">
+                <button type="submit">Subscribe Free</button>
+            </form>
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.6;">Join 2,500+ subscribers. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>What You'll <span style="color: var(--lego-blue);">Discover</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📊 Sales Trends</h3>
+                <p>Which neighborhoods are heating up? Which are cooling down? Data-driven insights.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💰 Price Analysis</h3>
+                <p>Median prices, price per square foot, and price changes month over month.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏠 Inventory Levels</h3>
+                <p>Know when inventory is tight — before the bidding wars start.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎯 Investment Potential</h3>
+                <p>Identify up-and-coming neighborhoods before prices skyrocket.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks! Your first Hot Sheet arrives on the 1st of next month.');
+        });
+    </script>
+</body>
+</html>

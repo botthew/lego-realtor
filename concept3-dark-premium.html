@@ -290,36 +290,124 @@
             line-height: 1.6;
         }
 
-        /* Lead Magnet Section */
-        .lead-magnet {
+        /* Featured Lead Magnet Section */
+        .featured-lead-magnet {
             padding: 120px 60px;
-            background: linear-gradient(180deg, var(--dark-bg) 0%, #1a0505 100%);
-            text-align: center;
-            position: relative;
+            background: var(--dark-bg);
+            border-top: 1px solid var(--dark-border);
+            border-bottom: 1px solid var(--dark-border);
         }
 
-        .lead-magnet::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 26, 9, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+        .featured-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .lead-magnet h2 {
+        .featured-content h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .featured-content h2 span {
+            color: var(--lego-blue);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--lego-blue);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .featured-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .featured-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .featured-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .featured-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--lego-blue);
+        }
+
+        .featured-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--lego-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .featured-btn:hover {
+            background: #004499;
+            transform: translateY(-2px);
+        }
+
+        .featured-image {
+            text-align: center;
+        }
+
+        .featured-image a {
+            display: inline-block;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 85, 191, 0.25);
+            transition: transform 0.3s;
+        }
+
+        .featured-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Lead Magnet Section */
+        .lead-magnet {
+            padding: 80px 60px;
+            background: var(--dark-bg);
+            text-align: center;
+        }
+
+        .lead-magnet h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--white);
         }
 
         .lead-magnet p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
+            font-size: 1rem;
+            margin-bottom: 30px;
         }
 
         .signup-form {
@@ -545,4 +633,48 @@
         </div>
     </section>
 
-    <!--
+    <!-- Featured Lead Magnet Section -->
+    <section class="featured-lead-magnet">
+        <div class="featured-container">
+            <div class="featured-content">
+                <span class="featured-badge">📊 FREE MONTHLY REPORT</span>
+                <h2>Neighborhood <span>Hot Sheet</span></h2>
+                <p>Exclusive market data for DMV neighborhoods. Sales trends, price changes, and inventory levels — delivered monthly.</p>
+                <ul class="featured-features">
+                    <li>Monthly neighborhood comparisons</li>
+                    <li>Price per square foot analysis</li>
+                    <li>Inventory level tracking</li>
+                    <li>Investment potential ratings</li>
+                </ul>
+                <a href="landing-pages/03-neighborhood-hot-sheet.html" class="featured-btn">Subscribe Free →</a>
+            </div>
+            <div class="featured-image">
+                <a href="landing-pages/03-neighborhood-hot-sheet.html" target="_blank">
+                    <img src="lead-magnets/03-neighborhood-hot-sheet.png" alt="Neighborhood Hot Sheet">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section class="lead-magnet">
+        <div class="lead-container" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h3 style="color: var(--white); font-size: 1.5rem; margin-bottom: 10px;">More Free Resources</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 30px;">Get market updates and exclusive content delivered to your inbox.</p>
+            <form class="signup-form" style="display: flex; gap: 12px; justify-content: center; max-width: 480px; margin: 0 auto;">
+                <input type="email" placeholder="Enter your email" required style="flex: 1; padding: 16px 24px; font-size: 1rem; background: var(--dark-bg); border: 1px solid var(--dark-border); border-radius: 8px; outline: none; color: var(--white);">
+                <button type="submit" style="padding: 16px 32px; font-size: 1rem; font-weight: 600; background: var(--lego-blue); color: var(--white); border: none; border-radius: 8px; cursor: pointer;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>Ready to Work Together?</h2>
+            <p>Let's discuss your real estate goals.</p>
+            <a href="mailto:hello@legorealtor.com" class="contact-btn">Contact Me</a>
+        </div>
+    </footer>
+</body>
+</html>

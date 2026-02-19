@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The DMV Buyer Blueprint | Free Home Buyer Guide | The LEGO Realtor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--lego-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px;
+            background: linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--lego-red);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(201, 26, 9, 0.3);
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 100px 50px;
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .form-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .signup-form input {
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .signup-form input:focus {
+            border-color: var(--lego-red);
+        }
+
+        .signup-form button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--lego-red);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .signup-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 26, 9, 0.4);
+        }
+
+        .privacy-note {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 15px;
+        }
+
+        /* What's Inside */
+        .features {
+            padding: 100px 50px;
+            background: var(--dark);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--lego-yellow);
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+        }
+
+        /* CTA Footer */
+        .cta-footer {
+            padding: 100px 50px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--lego-red), #8a1206);
+        }
+
+        .cta-footer h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-footer p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-footer a {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--white);
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+
+        .cta-footer a:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">The <span>LEGO</span> Realtor</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Complete Guide to Buying a Home in the <span>DMV</span></h1>
+                <p>Everything first-time home buyers need to know about financing, neighborhoods, and closing — all in one comprehensive guide.</p>
+                <a href="#get-guide" class="btn" style="background: var(--lego-red); color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: 700;">Get Your Free Guide ↓</a>
+            </div>
+            <div class="hero-image">
+                <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint Cover">
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="get-guide">
+        <div class="form-container">
+            <h2>Download Your Free Guide</h2>
+            <p>Join thousands of happy homeowners who used this guide to buy their dream home.</p>
+            <form class="signup-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Send Me The Guide</button>
+            </form>
+            <p class="privacy-note">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>What's <span style="color: var(--lego-red);">Inside</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🏦 Financing Options</h3>
+                <p>Understanding mortgages, FHA loans, VA benefits, and finding the best rates for your situation.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🗺️ Neighborhood Guide</h3>
+                <p>Deep dive into DC, MD, and VA neighborhoods — schools, amenities, and future development.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📋 The Complete Checklist</h3>
+                <p>Step-by-step timeline from pre-approval to closing day. Never miss a deadline.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💰 Budget Builder</h3>
+                <p>Calculate your true buying power including closing costs, HOA fees, and maintenance reserves.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔍 Property Evaluation</h3>
+                <p>How to spot value, identify red flags, and make competitive offers in the DMV market.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤝 Agent Selection</h3>
+                <p>Questions to ask and red flags to watch for when choosing your real estate partner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-footer">
+        <h2>Ready to Find Your Dream Home?</h2>
+        <p>Get the guide that thousands of DMV home buyers trusted.</p>
+        <a href="#get-guide">Download Now — It's Free!</a>
+    </section>
+
+    <script>
+        document.querySelector('.signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks! Check your email for the guide.');
+        });
+    </script>
+</body>
+</html>

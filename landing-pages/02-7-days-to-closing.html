@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days to Closing Checklist | The LEGO Realtor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--lego-yellow);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px;
+            background: linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--lego-yellow);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(255, 213, 0, 0.3);
+        }
+
+        .countdown-section {
+            padding: 100px 50px;
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .countdown-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .countdown-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .countdown-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .day-card {
+            background: var(--dark);
+            color: var(--white);
+            padding: 25px 15px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .day-card .day {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--lego-yellow);
+            margin-bottom: 10px;
+        }
+
+        .day-card .task {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .form-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, var(--lego-yellow), #ccaa00);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .signup-form input {
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .signup-form button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--dark);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .signup-form button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            padding: 100px 50px;
+            background: var(--dark);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--lego-yellow);
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .days-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">The LEGO <span>Realtor</span></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Never Miss a Deadline Again. <span>7 Days.</span> 7 Checklist Items.</h1>
+                <p>The ultimate countdown to closing. Every task, every document, every phone call — mapped out day by day.</p>
+                <a href="#get-checklist" class="btn" style="background: var(--lego-yellow); color: var(--dark); padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: 700;">Get Your Checklist ↓</a>
+            </div>
+            <div class="hero-image">
+                <img src="lead-magnets/02-7-days-to-closing.png" alt="7 Days to Closing Checklist">
+            </div>
+        </div>
+    </section>
+
+    <section class="countdown-section" id="get-checklist">
+        <div class="countdown-container">
+            <h2>Your <span style="color: var(--lego-yellow);">7-Day</span> Roadmap</h2>
+            <p>From wire fraud alerts to final walkthrough — here's what you'll do every day.</p>
+            
+            <div class="days-grid">
+                <div class="day-card">
+                    <div class="day">Day 7</div>
+                    <div class="task">Review closing disclosure</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 6</div>
+                    <div class="task">Verify funds & wiring</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 5</div>
+                    <div class="task">Final walkthrough</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 4</div>
+                    <div class="task">Title check</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 3</div>
+                    <div class="task">Document review</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 2</div>
+                    <div class="task">Insurance verification</div>
+                </div>
+                <div class="day-card">
+                    <div class="day">Day 1</div>
+                    <div class="task">Final confirmation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="get-checklist-form">
+        <div class="form-container">
+            <h2>Get Your Free Checklist</h2>
+            <p>Printable PDF. Mobile-friendly. Never close confused again.</p>
+            <form class="signup-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Send Me The Checklist</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why You Need <span style="color: var(--lego-yellow);">This Checklist</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>⚠️ Wire Fraud Protection</h3>
+                <p>Know exactly when and where to wire your money. Avoid the $50,000+ scam.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📝 Document Checklist</h3>
+                <p>Every signature, every initial — exactly what to expect at the closing table.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤝 Vendor Contacts</h3>
+                <p>All the people you'll need to confirm with — inspectors, agents, lenders.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏠 Final Walkthrough Guide</h3>
+                <p>What to check, what to test, what to photograph before signing.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.signup-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thanks! Check your email for the checklist.');
+            });
+        });
+    </script>
+</body>
+</html>

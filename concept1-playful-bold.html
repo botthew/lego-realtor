@@ -290,26 +290,123 @@
             line-height: 1.6;
         }
 
-        /* Lead Magnet Section */
-        .lead-magnet {
+        /* Featured Lead Magnet Section */
+        .featured-lead-magnet {
             padding: 100px 50px;
-            background: linear-gradient(135deg, var(--lego-red) 0%, #8a1206 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             text-align: center;
+            border-bottom: 4px solid var(--lego-red);
         }
 
-        .lead-magnet h2 {
+        .featured-lead-magnet h2 {
             font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .featured-lead-magnet h2 span {
+            color: var(--lego-red);
+        }
+
+        .featured-lead-magnet .subtitle {
+            font-size: 1.2rem;
+            color: var(--lego-yellow);
+            margin-bottom: 30px;
+        }
+
+        .featured-lead-magnet p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+            align-items: center;
+        }
+
+        .featured-preview img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(201, 26, 9, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .featured-preview img:hover {
+            transform: scale(1.02);
+        }
+
+        .featured-details {
+            text-align: left;
+        }
+
+        .featured-details h3 {
+            font-size: 1.5rem;
             margin-bottom: 20px;
             color: var(--white);
         }
 
-        .lead-magnet p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
+        .featured-details ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .featured-details li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
             opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        .featured-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--lego-red);
+            font-weight: 900;
+        }
+
+        .featured-cta {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--lego-red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .featured-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 26, 9, 0.5);
+        }
+
+        /* Lead Magnet Section */
+        .lead-magnet {
+            padding: 80px 50px;
+            background: var(--white);
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .lead-magnet h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .lead-magnet p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.8;
         }
 
         .signup-form {
@@ -536,14 +633,40 @@
         </div>
     </section>
 
+    <!-- Featured Lead Magnet Section -->
+    <section class="featured-lead-magnet">
+        <h2>Featured Free <span>Resource</span></h2>
+        <p class="subtitle">⭐ THE DMV BUYER BLUEPRINT ⭐</p>
+        <p>Everything first-time home buyers need to know about buying in DC, Maryland, and Virginia.</p>
+        
+        <div class="featured-grid">
+            <div class="featured-preview">
+                <a href="landing-pages/01-dmv-buyer-blueprint.html" target="_blank">
+                    <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint">
+                </a>
+            </div>
+            <div class="featured-details">
+                <h3>What's Inside:</h3>
+                <ul>
+                    <li>Financing options explained simply</li>
+                    <li>Neighborhood deep-dive guides</li>
+                    <li>Complete home buying checklist</li>
+                    <li>Budget calculator worksheet</li>
+                    <li>Agent selection guide</li>
+                    <li>Red flags to watch for</li>
+                </ul>
+                <a href="landing-pages/01-dmv-buyer-blueprint.html" class="featured-cta">Download Free Guide →</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Lead Magnet Section -->
     <section class="lead-magnet">
-        <h2>🎁 Free Home Buyer Guide!</h2>
-        <p>Get our comprehensive guide to buying your first home in the DMV area. Packed with tips, checklists, and insider knowledge!</p>
-        <img src="lead-magnets/01-dmv-buyer-blueprint.png" alt="DMV Buyer Blueprint Lead Magnet" class="lead-magnet-preview">
+        <h2>🎁 More Free Resources</h2>
+        <p>Get our checklists, guides, and market reports delivered to your inbox!</p>
         <form class="signup-form">
             <input type="email" placeholder="Enter your email address" required>
-            <button type="submit">Get My Free Guide!</button>
+            <button type="submit">Subscribe</button>
         </form>
     </section>
 

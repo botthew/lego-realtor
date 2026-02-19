@@ -360,10 +360,108 @@
             color: var(--gray-600);
         }
 
+        /* Featured Lead Magnet */
+        .featured-lead-magnet {
+            padding: 100px 40px;
+            background: #fafafa;
+            border-top: 3px solid var(--lego-red);
+        }
+
+        .featured-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-content {
+            order: 2;
+        }
+
+        .featured-image {
+            order: 1;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--lego-red);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .featured-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .featured-content h2 span {
+            color: var(--lego-red);
+        }
+
+        .featured-content p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .featured-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .featured-features li {
+            padding: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--gray-600);
+        }
+
+        .featured-features li::before {
+            content: '🔍';
+            position: absolute;
+            left: 0;
+        }
+
+        .featured-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--lego-red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .featured-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(201, 26, 9, 0.4);
+        }
+
+        .featured-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s;
+        }
+
+        .featured-image img:hover {
+            transform: scale(1.02);
+        }
+
         /* Lead Magnet */
         .lead-magnet {
-            padding: 80px 40px;
-            background: var(--lego-red);
+            padding: 60px 40px;
+            background: var(--dark);
             color: var(--white);
             text-align: center;
         }
@@ -373,15 +471,15 @@
             margin: 0 auto;
         }
 
-        .lead-magnet h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 12px;
+        .lead-magnet h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
         .lead-magnet p {
-            opacity: 0.9;
-            margin-bottom: 32px;
+            opacity: 0.8;
+            margin-bottom: 25px;
         }
 
         .signup-form {
@@ -608,4 +706,63 @@
         <div class="pillars-container">
             <div class="section-title">
                 <h2>Local Insights</h2>
-                <p
+                <p>Expert advice for navigating the DMV real estate market</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <span class="pillar-icon">🏠</span>
+                    <h3>Property Tours</h3>
+                    <p>Virtual tours and showcases of the best properties in the DMV.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">📊</span>
+                    <h3>Market Updates</h3>
+                    <p>Weekly breakdowns of what's happening in DC, MD, and VA markets.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">💡</span>
+                    <h3>Buying Tips</h3>
+                    <p>Practical advice for buyers at every stage of their journey.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">🏆</span>
+                    <h3>Success Stories</h3>
+                    <p>Real transactions and happy clients who've found their dream homes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Lead Magnet -->
+    <section class="featured-lead-magnet">
+        <div class="featured-container">
+            <div class="featured-content">
+                <span class="featured-badge">🔍 FREE GUIDE</span>
+                <h2>Open House <span>Survival Guide</span></h2>
+                <p>The ultimate guide to navigating open houses, asking the right questions, and standing out in competitive markets.</p>
+                <ul class="featured-features">
+                    <li>Structural red flags to check</li>
+                    <li>Water damage signs to spot</li>
+                    <li>Smart questions to ask agents</li>
+                    <li>Making a memorable impression</li>
+                </ul>
+                <a href="landing-pages/04-open-house-survival-guide.html" class="featured-btn">Get Free Guide →</a>
+            </div>
+            <div class="featured-image">
+                <a href="landing-pages/04-open-house-survival-guide.html" target="_blank">
+                    <img src="lead-magnets/04-open-house-survival-guide.png" alt="Open House Survival Guide">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact CTA -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h2>Ready to Find Your Dream Home?</h2>
+            <p>Let's build something amazing together!</p>
+            <a href="mailto:hello@legorealtor.com" class="contact-btn">Contact Me</a>
+        </div>
+    </footer>
+</body>
+</html>

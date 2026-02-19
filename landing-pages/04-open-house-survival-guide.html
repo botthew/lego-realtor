@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open House Survival Guide | The LEGO Realtor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 26, 26, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--lego-red);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 50px;
+            background: linear-gradient(135deg, var(--dark) 0%, #3a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--lego-red);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(201, 26, 9, 0.3);
+        }
+
+        .checklist-section {
+            padding: 100px 50px;
+            background: var(--white);
+            color: var(--dark);
+        }
+
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .checklist-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .checklist-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 15px;
+        }
+
+        .check-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .check-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--lego-red);
+        }
+
+        .check-item p {
+            font-size: 0.95rem;
+            text-align: left;
+            margin: 0;
+        }
+
+        .form-section {
+            padding: 100px 50px;
+            background: linear-gradient(135deg, var(--lego-red), #8a1206);
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .signup-form input {
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            outline: none;
+        }
+
+        .signup-form button {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: var(--white);
+            color: var(--lego-red);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .signup-form button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            padding: 100px 50px;
+            background: var(--dark);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--lego-red);
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">The <span>LEGO</span> Realtor</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Walk Into Any Open House. <span>Look Like a Pro.</span></h1>
+                <p>The ultimate guide to navigating open houses, asking the right questions, and standing out in competitive markets.</p>
+                <a href="#get-guide" class="btn" style="background: var(--lego-red); color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: 700;">Get Your Free Guide ↓</a>
+            </div>
+            <div class="hero-image">
+                <img src="lead-magnets/04-open-house-survival-guide.png" alt="Open House Survival Guide">
+            </div>
+        </div>
+    </section>
+
+    <section class="checklist-section">
+        <div class="checklist-container">
+            <h2>Your <span style="color: var(--lego-red);">Open House</span> Checklist</h2>
+            <p>What professional home buyers check at every open house.</p>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <span class="icon">🔍</span>
+                    <div>
+                        <h4>Structural Red Flags</h4>
+                        <p>Foundation cracks, water stains, uneven floors — what to look for.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="icon">💧</span>
+                    <div>
+                        <h4>Water Damage Signs</h4>
+                        <p>How to spot past leaks, mold, and drainage issues.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="icon">🔌</span>
+                    <div>
+                        <h4>Electrical & HVAC</h4>
+                        <p>Test every switch, check the water heater, feel the airflow.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="icon">🗣️</span>
+                    <div>
+                        <h4>Smart Questions to Ask</h4>
+                        <p>The exact questions that get sellers' agents talking.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="icon">📝</span>
+                    <div>
+                        <h4>Note-Taking Strategy</h4>
+                        <p>How to document what you see without looking like a spy.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <span class="icon">🤝</span>
+                    <div>
+                        <h4>Making an Impression</h4>
+                        <p>How to stand out to sellers' agents without being pushy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="get-guide">
+        <div class="form-container">
+            <h2>Download Your Free <span style="color: var(--white);">Guide</span></h2>
+            <p>Printable checklist included. Never miss an open house detail again.</p>
+            <form class="signup-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Send Me The Guide</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why You Need <span style="color: var(--lego-red);">This Guide</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>⏱️ Save Hours</h3>
+                <p>Don't waste weekends on homes that aren't worth your time.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💵 Save Money</h3>
+                <p>Spot $10,000+ in repair costs before you make an offer.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏆 Win More Offers</h3>
+                <p>Sellers' agents remember buyers who came prepared.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧠 Shop with Confidence</h3>
+                <p>Know exactly what you're looking at — and what it means.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thanks! Check your email for the guide.');
+        });
+    </script>
+</body>
+</html>

@@ -252,29 +252,130 @@
             font-size: 0.95rem;
         }
 
+        /* Featured Lead Magnet Section */
+        .featured-lead-magnet {
+            padding: 120px 60px;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .featured-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .featured-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--gray-800);
+        }
+
+        .featured-content h2 span {
+            color: var(--lego-yellow);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--lego-yellow);
+            color: var(--gray-800);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .featured-content p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .featured-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .featured-features li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            color: var(--gray-600);
+        }
+
+        .featured-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--lego-yellow);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .featured-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--lego-yellow);
+            color: var(--gray-800);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .featured-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 213, 0, 0.4);
+        }
+
+        .featured-image {
+            text-align: center;
+        }
+
+        .featured-image a {
+            display: inline-block;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-image img:hover {
+            transform: scale(1.02);
+        }
+
         /* Lead Magnet Section */
         .lead-magnet {
-            padding: 120px 60px;
-            background: var(--gray-800);
-            color: var(--white);
+            padding: 80px 60px;
+            background: var(--gray-50);
+            text-align: center;
         }
 
         .lead-container {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .lead-magnet h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 16px;
+        .lead-magnet h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gray-800);
         }
 
         .lead-magnet p {
-            color: var(--gray-400);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
+            color: var(--gray-600);
+            font-size: 1rem;
+            margin-bottom: 30px;
         }
 
         .signup-form {
@@ -510,14 +611,37 @@
         </div>
     </section>
 
+    <!-- Featured Lead Magnet Section -->
+    <section class="featured-lead-magnet">
+        <div class="featured-container">
+            <div class="featured-content">
+                <span class="featured-badge">⭐ FREE CHECKLIST</span>
+                <h2>7 Days to <span>Closing</span></h2>
+                <p>The ultimate countdown checklist. Every task, every document, every phone call — mapped out day by day.</p>
+                <ul class="featured-features">
+                    <li>Day-by-day roadmap to closing</li>
+                    <li>Wire fraud protection checklist</li>
+                    <li>Final walkthrough guide</li>
+                    <li>Printable PDF format</li>
+                </ul>
+                <a href="landing-pages/02-7-days-to-closing.html" class="featured-btn">Get Free Checklist →</a>
+            </div>
+            <div class="featured-image">
+                <a href="landing-pages/02-7-days-to-closing.html" target="_blank">
+                    <img src="lead-magnets/02-7-days-to-closing.png" alt="7 Days to Closing Checklist">
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Lead Magnet Section -->
     <section class="lead-magnet">
         <div class="lead-container">
-            <h2>Free Home Buying Guide</h2>
-            <p>Download my comprehensive guide to buying a home in the DMV area. Includes checklist, timeline, and insider tips.</p>
+            <h3>More Free Resources</h3>
+            <p>Subscribe for market updates, guides, and exclusive content.</p>
             <form class="signup-form">
                 <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Get the Guide</button>
+                <button type="submit">Subscribe</button>
             </form>
         </div>
     </section>
