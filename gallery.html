@@ -23,6 +23,82 @@
             --gray-800: #333333;
         }
 
+        :root {
+            --btn-height: 44px;
+            --btn-font: 14px;
+        }
+
+        /* LEGO Button - Simple rectangular with 3D effect */
+        .lego-btn {
+            --lego-color: var(--lego-red);
+            --lego-text: var(--lego-white);
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            height: var(--btn-height);
+            padding: 0 24px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: var(--btn-font);
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--lego-text);
+            background: var(--lego-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-radius: 4px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 6px 0 rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .lego-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2), 0 4px 0 rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .lego-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 rgba(0,0,0,0.2), 0 0 0 rgba(0,0,0,0.1), inset 0 2px 0 rgba(0,0,0,0.15);
+        }
+
+        /* Button colors */
+        .lego-btn.lego-red { --lego-color: var(--lego-red); }
+        .lego-btn.lego-yellow { --lego-color: var(--lego-yellow); --lego-text: var(--gray-800); }
+        .lego-btn.lego-blue { --lego-color: var(--lego-blue); }
+        .lego-btn.lego-green { --lego-color: #237841; }
+
+        /* LEGO Badge - Simple rectangular label */
+        .lego-badge {
+            --lego-color: var(--lego-blue);
+            --lego-text: var(--lego-white);
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--lego-text);
+            background: var(--lego-color);
+            border-radius: 4px;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .lego-badge:hover {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        /* Badge colors */
+        .lego-badge.lego-red { --lego-color: var(--lego-red); }
+        .lego-badge.lego-yellow { --lego-color: var(--lego-yellow); --lego-text: var(--gray-800); }
+        .lego-badge.lego-blue { --lego-color: var(--lego-blue); }
+        .lego-badge.lego-green { --lego-color: #237841; }
+
+        /* Page styles */
         html {
             scroll-behavior: smooth;
         }
@@ -53,7 +129,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 24px;
-            box-shadow: 0 4px 15px rgba(201, 26, 9, 0.3);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
         }
 
         .hero h1 {
@@ -143,6 +219,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 16px;
+            box-shadow: 0 3px 0 rgba(0,0,0,0.15);
         }
 
         .section-title {
@@ -218,30 +295,6 @@
             margin-bottom: 16px;
         }
 
-        .download-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--lego-blue);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .download-link:hover {
-            background: #3373CC;
-            transform: translateY(-2px);
-        }
-
-        .download-link svg {
-            width: 16px;
-            height: 16px;
-        }
-
         .logo-section {
             background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
             border-bottom: 3px solid var(--lego-red);
@@ -311,12 +364,6 @@
             color: var(--gray-600);
             line-height: 1.5;
             margin-bottom: 12px;
-        }
-
-        .lead-magnet-card .download-link {
-            width: 100%;
-            justify-content: center;
-            padding: 12px;
         }
 
         .pillar-card {
@@ -455,14 +502,14 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">Brand Assets Library</div>
-            <h1>The LEGO Realtor</h1>
+            <h1>The <span>LEGO</span> Realtor</h1>
             <p>A complete visual identity system for DMV real estate. Professional, playful, and built to connect.</p>
         </div>
     </section>
 
     <nav class="nav">
         <div class="nav-content">
-            <a href="#" class="nav-logo">The LEGO Realtor</a>
+            <a href="#" class="nav-logo">The <span>LEGO</span> Realtor</a>
             <ul class="nav-links">
                 <li><a href="#logo">Logo</a></li>
                 <li><a href="#lead-magnets">Lead Magnets</a></li>
@@ -484,7 +531,7 @@
                 <div class="card-content">
                     <h3>Primary Logo</h3>
                     <p>The core brand mark combining LEGO's iconic aesthetic with professional real estate positioning.</p>
-                    <a href="the-lego-realtor-logo.png" class="download-link" download>Download PNG</a>
+                    <a href="the-lego-realtor-logo.png" class="lego-btn lego-blue" download>Download PNG</a>
                 </div>
             </div>
         </div>
@@ -503,7 +550,7 @@
                 <div class="card-content">
                     <h4>1. The DMV Buyer Blueprint</h4>
                     <p>Complete home buying guide for DC, MD, and VA.</p>
-                    <a href="lead-magnets/01-dmv-buyer-blueprint.png" class="download-link" download>Download</a>
+                    <a href="lead-magnets/01-dmv-buyer-blueprint.png" class="lego-btn lego-red" download>Download</a>
                 </div>
             </div>
             <div class="lead-magnet-card">
@@ -513,7 +560,7 @@
                 <div class="card-content">
                     <h4>2. 7 Days to Closing</h4>
                     <p>Essential countdown checklist before settlement.</p>
-                    <a href="lead-magnets/02-7-days-to-closing.png" class="download-link" download>Download</a>
+                    <a href="lead-magnets/02-7-days-to-closing.png" class="lego-btn lego-yellow" download>Download</a>
                 </div>
             </div>
             <div class="lead-magnet-card">
@@ -523,7 +570,7 @@
                 <div class="card-content">
                     <h4>3. Neighborhood Hot Sheet</h4>
                     <p>Monthly market data reports for DMV neighborhoods.</p>
-                    <a href="lead-magnets/03-neighborhood-hot-sheet.png" class="download-link" download>Download</a>
+                    <a href="lead-magnets/03-neighborhood-hot-sheet.png" class="lego-btn lego-blue" download>Download</a>
                 </div>
             </div>
             <div class="lead-magnet-card">
@@ -533,7 +580,7 @@
                 <div class="card-content">
                     <h4>4. Open House Survival Guide</h4>
                     <p>Pro tips for navigating open houses like a pro.</p>
-                    <a href="lead-magnets/04-open-house-survival-guide.png" class="download-link" download>Download</a>
+                    <a href="lead-magnets/04-open-house-survival-guide.png" class="lego-btn lego-green" download>Download</a>
                 </div>
             </div>
         </div>
@@ -552,7 +599,7 @@
                 <div class="card-content">
                     <h4>Market Hot Takes</h4>
                     <p>Real estate market analysis and commentary.</p>
-                    <a href="content-pillars/pillar-market-hot-takes.png" class="download-link" download>Download</a>
+                    <a href="content-pillars/pillar-market-hot-takes.png" class="lego-btn lego-red" download>Download</a>
                 </div>
             </div>
             <div class="pillar-card">
@@ -562,16 +609,17 @@
                 <div class="card-content">
                     <h4>Property Tours</h4>
                     <p>Virtual walkthroughs and property showcases.</p>
-                    <a href="content-pillars/pillar-property-tours.png" class="download-link" download>Download</a>
+                    <a href="content-pillars/pillar-property-tours.png" class="lego-btn lego-blue" download>Download</a>
                 </div>
             </div>
             <div class="pillar-card">
-                <div class="card-image                    <img src="content-pillars/pillar-client-wins.png" alt="Client Wins">
+                <div class="card-image">
+                    <img src="content-pillars/pillar-client-wins.png" alt="Client Wins">
                 </div>
                 <div class="card-content">
                     <h4>Client Wins</h4>
                     <p>Success stories and testimonials from happy clients.</p>
-                    <a href="content-pillars/pillar-client-wins.png" class="download-link" download>Download</a>
+                    <a href="content-pillars/pillar-client-wins.png" class="lego-btn lego-yellow" download>Download</a>
                 </div>
             </div>
             <div class="pillar-card">
@@ -581,7 +629,7 @@
                 <div class="card-content">
                     <h4>Home Tips</h4>
                     <p>Practical advice for homeowners and buyers.</p>
-                    <a href="content-pillars/pillar-home-tips.png" class="download-link" download>Download</a>
+                    <a href="content-pillars/pillar-home-tips.png" class="lego-btn lego-green" download>Download</a>
                 </div>
             </div>
         </div>
