@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LEGO Realtor - LEGO Button Components</title>
+    <style>
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --lego-green: #237841;
+            --lego-orange: #FE8F18;
+            --lego-white: #FFFFFF;
+            --lego-black: #1A1A1A;
+            --btn-height: 44px;
+        }
+
+        /* LEGO Button - Simple rectangular with 3D effect */
+        .lego-btn {
+            --lego-color: var(--lego-red);
+            --lego-text: var(--lego-white);
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
+            height: var(--btn-height);
+            padding: 0 24px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--lego-text);
+            background: var(--lego-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-radius: 4px;
+            box-shadow: 
+                0 4px 0 rgba(0,0,0,0.2),
+                0 6px 0 rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .lego-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 
+                0 2px 0 rgba(0,0,0,0.2),
+                0 4px 0 rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .lego-btn:active {
+            transform: translateY(4px);
+            box-shadow: 
+                0 0 0 rgba(0,0,0,0.2),
+                0 0 0 rgba(0,0,0,0.1),
+                inset 0 2px 0 rgba(0,0,0,0.15);
+        }
+
+        /* Button colors */
+        .lego-btn.lego-red { --lego-color: var(--lego-red); }
+        .lego-btn.lego-yellow { --lego-color: var(--lego-yellow); --lego-text: var(--lego-black); }
+        .lego-btn.lego-blue { --lego-color: var(--lego-blue); }
+        .lego-btn.lego-green { --lego-color: var(--lego-green); }
+        .lego-btn.lego-orange { --lego-color: var(--lego-orange); }
+        .lego-btn.lego-white { --lego-color: var(--lego-white); --lego-text: var(--lego-black); }
+        .lego-btn.lego-black { --lego-color: var(--lego-black); }
+
+        /* LEGO Button with LEGO stud decorations on sides */
+        .lego-btn-decorated {
+            --lego-color: var(--lego-red);
+            --lego-text: var(--lego-white);
+            
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+            height: var(--btn-height);
+            padding: 0 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--lego-text);
+            background: var(--lego-color);
+            border: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border-radius: 4px;
+            box-shadow: 
+                0 4px 0 rgba(0,0,0,0.2),
+                0 6px 0 rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        /* LEGO studs on sides - simple rectangles */
+        .lego-btn-decorated::before,
+        .lego-btn-decorated::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: calc(var(--btn-height) + 8px);
+            top: -4px;
+            background: var(--lego-color);
+            border-radius: 3px;
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.15),
+                0 2px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Left side studs */
+        .lego-btn-decorated::before {
+            left: -8px;
+        }
+
+        /* Right side studs */
+        .lego-btn-decorated::after {
+            right: -8px;
+        }
+
+        .lego-btn-decorated:hover {
+            transform: translateY(2px);
+        }
+
+        .lego-btn-decorated.lego-red { --lego-color: var(--lego-red); }
+        .lego-btn-decorated.lego-yellow { --lego-color: var(--lego-yellow); --lego-text: var(--lego-black); }
+        .lego-btn-decorated.lego-blue { --lego-color: var(--lego-blue); }
+        .lego-btn-decorated.lego-green { --lego-color: var(--lego-green); }
+        .lego-btn-decorated.lego-orange { --lego-color: var(--lego-orange); }
+        .lego-btn-decorated.lego-white { --lego-color: var(--lego-white); --lego-text: var(--lego-black); }
+        .lego-btn-decorated.lego-black { --lego-color: var(--lego-black); }
+
+        /* LEGO Badge */
+        .lego-badge {
+            --lego-color: var(--lego-blue);
+            --lego-text: var(--lego-white);
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 16px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--lego-text);
+            background: var(--lego-color);
+            border-radius: 4px;
+            box-shadow: 
+                0 3px 0 rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .lego-badge:hover {
+            transform: translateY(1px);
+            box-shadow: 
+                0 2px 0 rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .lego-badge.lego-red { --lego-color: var(--lego-red); }
+        .lego-badge.lego-yellow { --lego-color: var(--lego-yellow); --lego-text: var(--lego-black); }
+        .lego-badge.lego-blue { --lego-color: var(--lego-blue); }
+        .lego-badge.lego-green { --lego-color: var(--lego-green); }
+        .lego-badge.lego-orange { --lego-color: var(--lego-orange); }
+        .lego-badge.lego-white { --lego-color: var(--lego-white); --lego-text: var(--lego-black); }
+        .lego-badge.lego-black { --lego-color: var(--lego-black); }
+
+        /* Page styles */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 100%);
+            padding: 60px 24px;
+            margin: 0;
+        }
+        
+        .demo-section {
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+        
+        .demo-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .demo-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-section">
+        <h2>Simple LEGO Buttons</h2>
+        <div class="demo-row">
+            <button class="lego-btn lego-red">Red</button>
+            <button class="lego-btn lego-yellow">Yellow</button>
+            <button class="lego-btn lego-blue">Blue</button>
+            <button class="lego-btn lego-green">Green</button>
+            <button class="lego-btn lego-white">White</button>
+            <button class="lego-btn lego-black">Black</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>LEGO Buttons with Stud Decorations</h2>
+        <div class="demo-row">
+            <button class="lego-btn-decorated lego-red">Red</button>
+            <button class="lego-btn-decorated lego-yellow">Yellow</button>
+            <button class="lego-btn-decorated lego-blue">Blue</button>
+            <button class="lego-btn-decorated lego-green">Green</button>
+            <button class="lego-btn-decorated lego-white">White</button>
+            <button class="lego-btn-decorated lego-black">Black</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>LEGO Badges</h2>
+        <div class="demo-row">
+            <span class="lego-badge lego-red">New</span>
+            <span class="lego-badge lego-yellow">Sale</span>
+            <span class="lego-badge lego-blue">Free</span>
+            <span class="lego-badge lego-green">Live</span>
+            <span class="lego-badge lego-orange">Hot</span>
+            <span class="lego-badge lego-white">Pro</span>
+            <span class="lego-badge lego-black">VIP</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>Usage</h2>
+        <pre style="background: #1a1a1a; color: #0f0; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>&lt;!-- Simple button --&gt;
+&lt;button class="lego-btn lego-red"&gt;Click Me&lt;/button&gt;
+
+&lt;!-- Button with stud decorations --&gt;
+&lt;button class="lego-btn-decorated lego-blue"&gt;Get Started&lt;/button&gt;
+
+&lt;!-- Badge --&gt;
+&lt;span class="lego-badge lego-yellow"&gt;Free&lt;/span&gt;</code></pre>
+    </div>
+</body>
+</html>
