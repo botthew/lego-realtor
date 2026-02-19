@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, height=1000">
+    <title>Ultimate Open House Survival Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1e3a5f;
+            width: 800px;
+            height: 1000px;
+            overflow: hidden;
+        }
+        .cover {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-brick {
+            width: 40px;
+            height: 40px;
+            background: #48BB78;
+            border-radius: 4px;
+            position: relative;
+        }
+        .logo-brick::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #48BB78;
+            border-radius: 2px;
+            box-shadow: 14px 0 0 #48BB78, 28px 0 0 #48BB78;
+        }
+        .logo-text {
+            color: #48BB78;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .badge {
+            background: #48BB78;
+            color: #1e3a5f;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        .house-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+        .title {
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .title span {
+            color: #48BB78;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .survival-cards {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .survival-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-align: center;
+            width: 120px;
+            transition: transform 0.3s ease;
+        }
+        .survival-card:hover {
+            transform: translateY(-5px);
+        }
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-tip {
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+        }
+        .guide-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .guide-header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+        .guide-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e3a5f;
+        }
+        .tips-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .tip-num {
+            width: 24px;
+            height: 24px;
+            background: #48BB78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .tip-text {
+            color: #2d3748;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .audience-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        .audience-tag {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #4a5568;
+        }
+        .audience-icon {
+            font-size: 18px;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 1;
+            margin-top: auto;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #48BB78 0%, #38A169 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+        }
+        .features {
+            display: flex;
+            gap: 25px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .decoration {
+            position: absolute;
+            pointer-events: none;
+        }
+        .dec-elements {
+            position: absolute;
+            opacity: 0.15;
+        }
+        .de-1 {
+            top: 100px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: #48BB78;
+            border-radius: 15px;
+            transform: rotate(15deg);
+        }
+        .de-2 {
+            bottom: 150px;
+            left: -40px;
+            width: 80px;
+            height: 80px;
+            background: #F6AD55;
+            border-radius: 12px;
+        }
+        .de-3 {
+            top: 50%;
+            right: 10%;
+            width: 50px;
+            height: 50px;
+            background: #FF7675;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <div class="decoration">
+            <div class="dec-elements de-1"></div>
+            <div class="dec-elements de-2"></div>
+            <div class="dec-elements de-3"></div>
+        </div>
+        
+        <div class="header">
+            <div class="logo">
+                <div class="logo-brick"></div>
+                <span class="logo-text">LEGO REALTOR</span>
+            </div>
+            <span class="badge">FUN GUIDE</span>
+        </div>
+        
+        <div class="main-content">
+            <div class="house-icon">🏠</div>
+            
+            <h1 class="title">The Ultimate <span>Open House</span><br>Survival Guide</h1>
+            <p class="subtitle">Tips & tricks for buyers AND sellers</p>
+            
+            <div class="survival-cards">
+                <div class="survival-card">
+                    <div class="card-icon">🔍</div>
+                    <div class="card-title">For Buyers</div>
+                    <div class="card-tip">What to look for</div>
+                </div>
+                <div class="survival-card">
+                    <div class="card-icon">🏠</div>
+                    <div class="card-title">For Sellers</div>
+                    <div class="card-tip">Stage like a pro</div>
+                </div>
+                <div class="survival-card">
+                    <div class="card-icon">💬</div>
+                    <div class="card-title">Questions</div>
+                    <div class="card-tip">Ask the right ones</div>
+                </div>
+                <div class="survival-card">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Strategy</div>
+                    <div class="card-tip">Make it count</div>
+                </div>
+            </div>
+            
+            <div class="guide-preview">
+                <div class="guide-header">
+                    <div class="guide-title">Pro Tips Inside:</div>
+                </div>
+                
+                <div class="tips-list">
+                    <div class="tip-item">
+                        <div class="tip-num">1</div>
+                        <div class="tip-text">Check under sinks & test fixtures</div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-num">2</div>
+                        <div class="tip-text">Open closets & check storage space</div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-num">3</div>
+                        <div class="tip-text">Feel the flow between rooms</div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-num">4</div>
+                        <div class="tip-text">Ask about age of systems</div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-num">5</div>
+                        <div class="tip-text">Don't judge paint - it's easy to change</div>
+                    </div>
+                    <div class="tip-item">
+                        <div class="tip-num">6</div>
+                        <div class="tip-text">Scope the neighborhood twice</div>
+                    </div>
+                </div>
+                
+                <div class="audience-tags">
+                    <div class="audience-tag">
+                        <span class="audience-icon">👀</span>
+                        <span>First-time buyers</span>
+                    </div>
+                    <div class="audience-tag">
+                        <span class="audience-icon">🏡</span>
+                        <span>Seasoned homeowners</span>
+                    </div>
+                    <div class="audience-tag">
+                        <span class="audience-icon">💪</span>
+                        <span>Sellers preparing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">📖</div>
+                    <span>24 pages of tips</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✓</div>
+                    <span>Buyer & seller editions</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎁</div>
+                    <span>Bonus checklist</span>
+                </div>
+            </div>
+            <button class="cta-button">Get the Guide</button>
+        </div>
+    </div>
+</body>
+</html>

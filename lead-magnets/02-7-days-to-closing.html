@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=800, height=1000">
+    <title>7 Days to Closing Checklist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d4c3d;
+            width: 800px;
+            height: 1000px;
+            overflow: hidden;
+        }
+        .cover {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0d4c3d 0%, #1a5f4a 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            position: relative;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-brick {
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            border-radius: 4px;
+            position: relative;
+        }
+        .logo-brick::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 2px;
+            box-shadow: 14px 0 0 #FFD700, 28px 0 0 #FFD700;
+        }
+        .logo-text {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+        .week-visual {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+        .day-brick {
+            width: 60px;
+            height: 35px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .day-brick.active {
+            background: #FFD700;
+            color: #0d4c3d;
+        }
+        .day-brick.checked::after {
+            content: '✓';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #4CAF50;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .title {
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .title span {
+            color: #FFD700;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.8);
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .checklist-preview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .checklist-title {
+            color: #FFD700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .check-box {
+            width: 28px;
+            height: 28px;
+            border: 3px solid #FFD700;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .check-box.checked {
+            background: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .check-box.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .check-text {
+            color: white;
+            font-size: 15px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700, #4CAF50);
+            border-radius: 4px;
+            width: 60%;
+        }
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 1;
+            margin-top: auto;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFEB3B 100%);
+            color: #0d4c3d;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+        .stats {
+            display: flex;
+            gap: 25px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+        }
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-icon {
+            font-size: 18px;
+        }
+        .lego-decorations {
+            position: absolute;
+            pointer-events: none;
+        }
+        .lego-brick {
+            position: absolute;
+            border-radius: 4px;
+        }
+        .lb-1 { top: 80px; right: 20px; width: 40px; height: 25px; background: #FF6B6B; }
+        .lb-2 { bottom: 200px; left: 10px; width: 30px; height: 20px; background: #4ECDC4; }
+        .lb-3 { bottom: 100px; right: 80px; width: 35px; height: 22px; background: #FFD700; }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <div class="lego-decorations">
+            <div class="lego-brick lb-1"></div>
+            <div class="lego-brick lb-2"></div>
+            <div class="lego-brick lb-3"></div>
+        </div>
+        
+        <div class="header">
+            <div class="logo">
+                <div class="logo-brick"></div>
+                <span class="logo-text">LEGO REALTOR</span>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="week-visual">
+                <div class="day-brick active">D-7</div>
+                <div class="day-brick active">D-6</div>
+                <div class="day-brick active">D-5</div>
+                <div class="day-brick checked">D-4</div>
+                <div class="day-brick checked">D-3</div>
+                <div class="day-brick checked">D-2</div>
+                <div class="day-brick">D-1</div>
+            </div>
+            
+            <h1 class="title">7 Days to <span>Closing</span><br>Checklist</h1>
+            <p class="subtitle">Don't let closing day surprises catch you off guard</p>
+            
+            <div class="checklist-preview">
+                <div class="checklist-title">Your Countdown Checklist</div>
+                
+                <div class="checklist-item">
+                    <div class="check-box checked"></div>
+                    <span class="check-text">Confirm wire transfer details</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-box checked"></div>
+                    <span class="check-text">Order homeowner's insurance</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-box checked"></div>
+                    <span class="check-text">Schedule final walkthrough</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-box"></div>
+                    <span class="check-text">Verify closing time with title</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-box"></div>
+                    <span class="check-text">Bring ID & proof of funds</span>
+                </div>
+                <div class="checklist-item">
+                    <div class="check-box"></div>
+                    <span class="check-text">Review closing disclosure</span>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-icon">✓</span>
+                    <span>35 checklist items</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">🕐</span>
+                    <span>Printable PDF</span>
+                </div>
+            </div>
+            <button class="cta-button">Get My Checklist</button>
+        </div>
+    </div>
+</body>
+</html>

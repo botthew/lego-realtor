@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LEGO Realtor | Neighborhood Focus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --lego-green: #237841;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+            --gray-50: #f8f9fa;
+            --gray-100: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+            --accent: #2d6a4f;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--lego-red);
+        }
+
+        .dmv-badge {
+            background: var(--lego-yellow);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-800);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--lego-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 40px 80px;
+            background: var(--white);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .hero h1 span {
+            color: var(--lego-red);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--lego-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #a01608;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--gray-800);
+            border: 2px solid var(--gray-100);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--lego-red);
+            color: var(--lego-red);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 40px;
+            background: var(--gray-50);
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--gray-600);
+        }
+
+        .map-visual {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .service-areas h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .area-list {
+            list-style: none;
+        }
+
+        .area-list li {
+            padding: 16px 20px;
+            background: var(--gray-50);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .area-list li:hover,
+        .area-list li.active {
+            background: var(--lego-red);
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .area-list li span {
+            width: 10px;
+            height: 10px;
+            background: var(--lego-yellow);
+            border-radius: 50%;
+        }
+
+        .area-list li.active span {
+            background: var(--white);
+        }
+
+        .map-display {
+            background: linear-gradient(135deg, #e8f4ea 0%, #d4e8d7 100%);
+            border-radius: 16px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--accent);
+        }
+
+        .map-placeholder svg {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        .map-placeholder p {
+            font-weight: 600;
+        }
+
+        /* Neighborhood Spotlights */
+        .spotlights {
+            padding: 80px 40px;
+            background: var(--white);
+        }
+
+        .spotlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .spotlight-card {
+            background: var(--gray-50);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .spotlight-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--lego-blue) 0%, var(--lego-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .spotlight-content {
+            padding: 24px;
+        }
+
+        .spotlight-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .spotlight-content p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .spotlight-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--lego-red);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* Content Pillars */
+        .content-pillars {
+            padding: 80px 40px;
+            background: var(--gray-50);
+        }
+
+        .pillars-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--lego-yellow);
+            transform: translateY(-5px);
+        }
+
+        .pillar-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .pillar-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        /* Lead Magnet */
+        .lead-magnet {
+            padding: 80px 40px;
+            background: var(--lego-red);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .lead-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .lead-magnet h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .lead-magnet p {
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .signup-form input {
+            padding: 16px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            width: 300px;
+            outline: none;
+        }
+
+        .signup-form button {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            background: var(--lego-yellow);
+            color: var(--dark);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .signup-form button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 60px 40px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .social-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--lego-red);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: var(--gray-600);
+            margin-bottom: 24px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--lego-yellow);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .spotlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .map-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; flex-wrap: wrap; gap: 15px; }
+            .nav-links { display: none; }
+            .hero { padding: 120px 20px 60px; }
+            .hero h1 { font-size: 2.5rem; }
+            .cta-group { flex-direction: column; }
+            .pillars-grid { grid-template-columns: 1fr; }
+            .spotlights-grid { grid-template-columns: 1fr; }
+            .signup-form { flex-direction: column; align-items: center; }
+            .signup-form input { width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">The <span>LEGO</span> Realtor</div>
+        <span class="dmv-badge">🏛️ DMV Area Expert</span>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>Your Trusted <span>DMV</span> Real Estate Expert</h1>
+            <p>Building stronger communities one neighborhood at a time. Specializing in Washington DC, Maryland, and Virginia real estate.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Find Your Home</a>
+                <a href="#areas" class="btn btn-secondary">Explore Neighborhoods</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="areas">
+        <div class="map-container">
+            <div class="section-title">
+                <h2>Service Areas</h2>
+                <p>Proudly serving the entire DMV region</p>
+            </div>
+            <div class="map-visual">
+                <div class="map-grid">
+                    <div class="service-areas">
+                        <h3>Select an Area</h3>
+                        <ul class="area-list">
+                            <li class="active"><span></span> Washington DC</li>
+                            <li><span></span> Montgomery County</li>
+                            <li><span></span> Prince George's County</li>
+                            <li><span></span> Fairfax County</li>
+                            <li><span></span> Arlington County</li>
+                            <li><span></span> Alexandria</li>
+                        </ul>
+                    </div>
+                    <div class="map-display">
+                        <div class="map-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                                <circle cx="12" cy="9" r="2.5"/>
+                            </svg>
+                            <p>Interactive DMV Map</p>
+                            <p style="font-size: 0.85rem; opacity: 0.7;">Click an area to explore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neighborhood Spotlights -->
+    <section class="spotlights">
+        <div class="spotlights-grid">
+            <div class="spotlight-card">
+                <div class="spotlight-image">🏛️</div>
+                <div class="spotlight-content">
+                    <h3>Washington DC</h3>
+                    <p>Historic homes, vibrant culture, and endless opportunities in the heart of the district.</p>
+                    <a href="#" class="spotlight-link">Explore DC →</a>
+                </div>
+            </div>
+            <div class="spotlight-card">
+                <div class="spotlight-image">🌳</div>
+                <div class="spotlight-content">
+                    <h3>Bethesda & Chevy Chase</h3>
+                    <p>Family-friendly communities with excellent schools and suburban charm.</p>
+                    <a href="#" class="spotlight-link">Explore Montgomery →</a>
+                </div>
+            </div>
+            <div class="spotlight-card">
+                <div class="spotlight-image">🏢</div>
+                <div class="spotlight-content">
+                    <h3>Arlington & Alexandria</h3>
+                    <p>Urban convenience meets historic elegance in Northern Virginia's finest.</p>
+                    <a href="#" class="spotlight-link">Explore NoVA →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Pillars -->
+    <section class="content-pillars" id="content">
+        <div class="pillars-container">
+            <div class="section-title">
+                <h2>Local Insights</h2>
+                <p
