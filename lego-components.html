@@ -25,6 +25,8 @@
             --badge-height: 32px;
             --btn-font: 16px;
             --badge-font: 13px;
+            --stud-size: 18px;
+            --stud-height: 6px;
         }
 
         /* ============================================
@@ -53,52 +55,58 @@
             user-select: none;
             transition: transform 0.12s ease, box-shadow 0.12s ease;
             margin: 6px;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         /* ============================================
            LEGO BUTTON STUDS (Top Edge)
+           Proper LEGO studs - rectangular with depth
            ============================================ */
         
         .lego-btn::before {
             content: '';
             position: absolute;
-            top: -8px;
+            top: calc(var(--stud-height) * -1);
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 32px);
-            height: 12px;
-            background: transparent;
-            z-index: 10;
+            width: calc(100% - 16px);
+            height: var(--stud-height);
+            display: flex;
+            justify-content: center;
+            gap: 4px;
         }
 
-        /* Create studs using radial gradients */
+        /* Individual stud bumps */
         .lego-btn::before {
             background: 
-                radial-gradient(
-                    ellipse 18px 10px at 25% 100%,
-                    var(--lego-color) 0%,
-                    var(--lego-color) 40%,
-                    rgba(0,0,0,0.15) 45%,
-                    transparent 50%
+                linear-gradient(to bottom, 
+                    var(--lego-color) 0%, 
+                    var(--lego-color) 30%,
+                    rgba(0,0,0,0.1) 30%,
+                    rgba(0,0,0,0.15) 100%
                 ),
-                radial-gradient(
-                    ellipse 18px 10px at 50% 100%,
-                    var(--lego-color) 0%,
-                    var(--lego-color) 40%,
-                    rgba(0,0,0,0.15) 45%,
-                    transparent 50%
+                linear-gradient(to bottom, 
+                    var(--lego-color) 0%, 
+                    var(--lego-color) 30%,
+                    rgba(0,0,0,0.1) 30%,
+                    rgba(0,0,0,0.15) 100%
                 ),
-                radial-gradient(
-                    ellipse 18px 10px at 75% 100%,
-                    var(--lego-color) 0%,
-                    var(--lego-color) 40%,
-                    rgba(0,0,0,0.15) 45%,
-                    transparent 50%
+                linear-gradient(to bottom, 
+                    var(--lego-color) 0%, 
+                    var(--lego-color) 30%,
+                    rgba(0,0,0,0.1) 30%,
+                    rgba(0,0,0,0.15) 100%
                 );
-            background-size: 36px 12px;
-            background-position: 0 0, 33% 0, 66% 0;
+            background-size: var(--stud-size) var(--stud-height);
+            background-position: 0 0, var(--stud-size) 0, calc(var(--stud-size) * 2) 0;
             background-repeat: repeat-x;
+            
+            /* Add stud tops */
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                var(--stud-size) calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                calc(var(--stud-size) * 2) calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1);
         }
 
         /* ============================================
@@ -154,29 +162,42 @@
         .lego-btn.lego-small {
             --btn-height: 36px;
             --btn-font: 13px;
+            --stud-size: 14px;
+            --stud-height: 5px;
             padding: 0 18px;
             min-width: 80px;
         }
         
         .lego-btn.lego-small::before {
-            top: -6px;
-            height: 10px;
-            width: calc(100% - 20px);
-            background-size: 28px 10px;
+            top: calc(var(--stud-height) * -1);
+            width: calc(100% - 12px);
+            background-size: var(--stud-size) var(--stud-height);
+            background-position: 0 0, var(--stud-size) 0;
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                var(--stud-size) calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1);
         }
 
         .lego-btn.lego-large {
             --btn-height: 60px;
             --btn-font: 20px;
+            --stud-size: 24px;
+            --stud-height: 8px;
             padding: 0 36px;
             min-width: 160px;
         }
         
         .lego-btn.lego-large::before {
-            top: -10px;
-            height: 14px;
-            width: calc(100% - 48px);
-            background-size: 48px 14px;
+            top: calc(var(--stud-height) * -1);
+            width: calc(100% - 24px);
+            background-size: var(--stud-size) var(--stud-height);
+            background-position: 0 0, var(--stud-size) 0, calc(var(--stud-size) * 2) 0;
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                var(--stud-size) calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                calc(var(--stud-size) * 2) calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1);
         }
 
         /* ============================================
@@ -191,9 +212,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 70px;
+            min-width: 60px;
             height: var(--badge-height);
-            padding: 0 14px;
+            padding: 0 12px;
             font-family: 'Segoe UI', Arial, sans-serif;
             font-size: var(--badge-font);
             font-weight: 700;
@@ -211,33 +232,38 @@
         .lego-badge::before {
             content: '';
             position: absolute;
-            top: -6px;
+            top: calc(var(--stud-height) * -1);
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 16px);
-            height: 10px;
-            background: transparent;
+            width: calc(100% - 8px);
+            height: var(--stud-height);
+            display: flex;
+            justify-content: center;
+            gap: 3px;
         }
 
         .lego-badge::before {
             background: 
-                radial-gradient(
-                    ellipse 14px 8px at 33% 100%,
-                    var(--lego-color) 0%,
-                    var(--lego-color) 40%,
-                    rgba(0,0,0,0.12) 45%,
-                    transparent 50%
+                linear-gradient(to bottom, 
+                    var(--lego-color) 0%, 
+                    var(--lego-color) 30%,
+                    rgba(0,0,0,0.1) 30%,
+                    rgba(0,0,0,0.15) 100%
                 ),
-                radial-gradient(
-                    ellipse 14px 8px at 66% 100%,
-                    var(--lego-color) 0%,
-                    var(--lego-color) 40%,
-                    rgba(0,0,0,0.12) 45%,
-                    transparent 50%
+                linear-gradient(to bottom, 
+                    var(--lego-color) 0%, 
+                    var(--lego-color) 30%,
+                    rgba(0,0,0,0.1) 30%,
+                    rgba(0,0,0,0.15) 100%
                 );
-            background-size: 28px 10px;
-            background-position: 0 0, 50% 0;
+            background-size: 14px var(--stud-height);
+            background-position: 0 0, 14px 0;
             background-repeat: repeat-x;
+            
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                14px calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1);
         }
 
         /* Badge 3D */
@@ -270,31 +296,41 @@
 
         /* Badge sizes */
         .lego-badge.lego-small {
-            --badge-height: 24px;
-            --badge-font: 11px;
-            padding: 0 10px;
-            min-width: 50px;
+            --badge-height: 22px;
+            --badge-font: 10px;
+            padding: 0 8px;
+            min-width: 40px;
         }
         
         .lego-badge.lego-small::before {
-            top: -5px;
-            height: 8px;
-            width: calc(100% - 12px);
-            background-size: 22px 8px;
+            top: calc(var(--stud-height) * -1);
+            width: calc(100% - 6px);
+            background-size: 10px var(--stud-height);
+            background-position: 0 0, 10px 0;
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 1px rgba(0,0,0,0.1),
+                10px calc(var(--stud-height) * -0.7) 1px rgba(0,0,0,0.1);
         }
 
         .lego-badge.lego-large {
             --badge-height: 42px;
             --badge-font: 16px;
-            padding: 0 20px;
-            min-width: 100px;
+            padding: 0 18px;
+            min-width: 80px;
         }
         
         .lego-badge.lego-large::before {
-            top: -8px;
-            height: 12px;
-            width: calc(100% - 24px);
-            background-size: 36px 12px;
+            top: calc(var(--stud-height) * -1);
+            width: calc(100% - 14px);
+            background-size: 18px var(--stud-height);
+            background-position: 0 0, 18px 0, 36px 0;
+            background-repeat: repeat-x;
+            box-shadow: 
+                0 calc(var(--stud-height) * -0.3) 0 rgba(255,255,255,0.15) inset,
+                0 calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                18px calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1),
+                36px calc(var(--stud-height) * -0.7) 2px rgba(0,0,0,0.1);
         }
 
         /* ============================================
@@ -307,11 +343,6 @@
                 --btn-font: 14px;
                 min-width: 100px;
                 padding: 0 22px;
-            }
-            
-            .lego-btn::before {
-                top: -7px;
-                width: calc(100% - 24px);
             }
         }
 
@@ -351,7 +382,7 @@
          ============================================ -->
     
     <div class="demo-section">
-        <h2>LEGO Buttons</h2>
+        <h2>🔘 LEGO Buttons</h2>
         
         <p style="margin-bottom: 16px; color: #666;">Standard Sizes:</p>
         <div class="demo-row">
@@ -383,7 +414,7 @@
          ============================================ -->
     
     <div class="demo-section">
-        <h2>LEGO Badges</h2>
+        <h2>🏷️ LEGO Badges</h2>
         
         <p style="margin-bottom: 16px; color: #666;">Standard Sizes:</p>
         <div class="demo-row">
@@ -409,7 +440,7 @@
          ============================================ -->
     
     <div class="demo-section">
-        <h2>How to Use</h2>
+        <h2>📋 How to Use</h2>
         
         <h3 style="color: #333; margin: 20px 0 12px;">Buttons</h3>
         <pre style="background: #1a1a1a; color: #0f0; padding: 16px; border-radius: 8px; overflow-x: auto;"><code>&lt;!-- Standard button --&gt;
@@ -439,7 +470,7 @@
         <h3 style="color: #333; margin: 30px 0 12px;">Copy-Paste CSS Only</h3>
         <p style="color: #666; margin-bottom: 16px;">
             To use these components in your own project, copy everything from the 
-            <code>&lt;style&gt;</code> tag (lines 1-233) into your CSS file, then use the 
+            <code>&lt;style&gt;</code> tag (lines 1-310) into your CSS file, then use the 
             HTML classes shown above.
         </p>
     </div>
