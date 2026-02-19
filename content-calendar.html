@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day Content Calendar | LEGO Realtor & Bethesda Brokers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --bethesda-gold: #C9A227;
+            --bethesda-dark: #1a1a1a;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #666666;
+            --gray-800: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
+            padding: 60px 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+        }
+
+        .brand-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid;
+        }
+
+        .lego .brand-header {
+            border-color: var(--lego-red);
+        }
+
+        .bethesda .brand-header {
+            border-color: var(--bethesda-gold);
+        }
+
+        .brand-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .lego .brand-icon {
+            background: var(--lego-red);
+        }
+
+        .bethesda .brand-icon {
+            background: var(--bethesda-dark);
+        }
+
+        .brand-title h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        .brand-title p {
+            color: var(--gray-600);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .day-card {
+            background: var(--gray-100);
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid;
+        }
+
+        .lego .day-card {
+            border-color: var(--lego-red);
+        }
+
+        .bethesda .day-card {
+            border-color: var(--bethesda-gold);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .day-number {
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .day-type {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .day-type.lead-magnet {
+            background: var(--lego-red);
+            color: var(--white);
+        }
+
+        .day-type.content {
+            background: var(--lego-blue);
+            color: var(--white);
+        }
+
+        .day-type.email {
+            background: var(--lego-yellow);
+            color: #1a1a1a;
+        }
+
+        .day-type.video {
+            background: var(--bethesda-gold);
+            color: #1a1a1a;
+        }
+
+        .day-type.post {
+            background: var(--gray-600);
+            color: var(--white);
+        }
+
+        .day-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .day-desc {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, var(--bethesda-dark) 0%, #2a2a2a 100%);
+            border-radius: 20px;
+            padding: 48px;
+            margin-top: 48px;
+            color: var(--white);
+        }
+
+        .pricing-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--bethesda-gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--bethesda-gold);
+            margin-bottom: 16px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .pricing-card li::before {
+            content: '✓';
+            color: var(--bethesda-gold);
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📅 30-Day Content Calendar</h1>
+        <p class="subtitle">Both Brands | Ready to Execute</p>
+
+        <!-- LEGO Realtor -->
+        <section class="section brand-section lego">
+            <div class="brand-header">
+                <div class="brand-icon">🧱</div>
+                <div class="brand-title">
+                    <h2>The LEGO Realtor</h2>
+                    <p>Top-of-Funnel | Buyer-Focused | Playful Authority</p>
+                </div>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 1</span>
+                        <span class="day-type lead-magnet">Lead Magnet</span>
+                    </div>
+                    <div class="day-title">DMV Buyer Blueprint</div>
+                    <div class="day-desc">Launch lead magnet on all platforms</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 2-3</span>
+                        <span class="day-type content">Content</span>
+                    </div>
+                    <div class="day-title">Market Hot Takes</div>
+                    <div class="day-desc">First video: "Why DC Homes Are Overpriced"</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 4</span>
+                        <span class="day-type email">Email</span>
+                    </div>
+                    <div class="day-title">Welcome Sequence</div>
+                    <div class="day-desc">Email 1 to new subscribers</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 5-6</span>
+                        <span class="day-type content">Content</span>
+                    </div>
+                    <div class="day-title">Property Tour</div>
+                    <div class="day-desc">Featured listing showcase</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 7</span>
+                        <span class="day-type lead-magnet">Lead Magnet</span>
+                    </div>
+                    <div class="day-title">7 Days to Closing</div>
+                    <div class="day-desc">Launch second lead magnet</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 8-9</span>
+                        <span class="day-type post">Post</span>
+                    </div>
+                    <div class="day-title">Client Win Story</div>
+                    <div class="day-desc">First testimonial post</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 10-11</span>
+                        <span class="day-type content">Content</span>
+                    </div>
+                    <div class="day-title">Home Tips</div>
+                    <div class="day-desc">DIY maintenance tips carousel</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 12</span>
+                        <span class="day-type email">Email</span>
+                    </div>
+                    <div class="day-title">Nurture Email</div>
+                    <div class="day-desc">7 Days to Closing reminder</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 13-14</span>
+                        <span class="day-type video">Video</span>
+                    </div>
+                    <div class="day-title">Open House Tour</div>
+                    <div class="day-desc">Virtual walkthrough content</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 15</span>
+                        <span class="day-type lead-magnet">Lead Magnet</span>
+                    </div>
+                    <div class="day-title">Neighborhood Hot Sheet</div>
+                    <div class="day-desc">Monthly market report launch</div>
+                </div>
+                <!-- Continue pattern... -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Days 16-30</span>
+                        <span class="day-type post">Repeat</span>
+                    </div>
+                    <div class="day-title">Rotate & Repurpose</div>
+                    <div class="day-desc">Rotate all content types weekly</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bethesda Brokers -->
+        <section class="section brand-section bethesda">
+            <div class="brand-header">
+                <div class="brand-icon">⚖️</div>
+                <div class="brand-title">
+                    <h2>Bethesda Brokers</h2>
+                    <p>High-Value | Legal/Expert Authority | Premium Service</p>
+                </div>
+            </div>
+            <div class="calendar-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 1</span>
+                        <span class="day-type lead-magnet">Lead Magnet</span>
+                    </div>
+                    <div class="day-title">Legal Loopholes Report</div>
+                    <div class="day-desc">Launch expert report</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 2</span>
+                        <span class="day-type email">Email</span>
+                    </div>
+                    <div class="day-title">Weekly Update #1</div>
+                    <div class="day-desc">DMV Market Friday Update</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 3-4</span>
+                        <span class="day-type video">Video</span>
+                    </div>
+                    <div class="day-title">Expert Reacts #1</div>
+                    <div class="day-desc">Review a real estate contract</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 5</span>
+                        <span class="day-type email">Email</span>
+                    </div>
+                    <div class="day-title">Case Study</div>
+                    <div class="day-desc">Client success story</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 6-7</span>
+                        <span class="day-type content">Content</span>
+                    </div>
+                    <div class="day-title">Expert Analysis</div>
+                    <div class="day-desc">Market deep-dive article</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 8</span>
+                        <span class="day-type email">Email</span>
+                    </div>
+                    <div class="day-title">Weekly Update #2</div>
+                    <div class="day-desc">Friday market recap</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 9-10</span>
+                        <span class="day-type video">Video</span>
+                    </div>
+                    <div class="day-title">Expert Reacts #2</span>
+                    <div class="day-desc">Document review series</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 11-12</span>
+                        <span class="day-type content">Content</span>
+                    </div>
+                    <div class="day-title">Legal Tips</div>
+                    <div class="day-desc">"Gotcha" clauses explained</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Day 13</span>
+                        <span class="day-type lead-magnet">Lead Magnet</span>
+                    </div>
+                    <div class="day-title">Expert Reacts Series</div>
+                    <div class="day-desc">Bundle videos as lead magnet</div>
+                </div>
+                <div class="day-card">
+                    <div class="day-header">
+                        <span class="day-number">Days 14-30</span>
+                        <span class="day-type post">Repeat</span>
+                    </div>
+                    <div class="day-title">Weekly Rhythm</div>
+                    <div class="day-desc">Fri: Email | Tue/Thu: Video</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing-section">
+            <h2>💰 Implementation Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Phase 1: Foundation</h3>
+                    <div class="price">$2,500</div>
+                    <ul>
+                        <li>Set up social accounts</li>
+                        <li>Lead magnet landing pages</li>
+                        <li>Email list setup (Mailchimp/Klaviyo)</li>
+                        <li>30-day content calendar</li>
+                        <li>All assets created</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Phase 2: Monthly Management</h3>
+                    <div class="price">$1,500/month</div>
+                    <ul>
+                        <li>Content creation & posting</li>
+                        <li>Email newsletter (4x/month)</li>
+                        <li>Community engagement</li>
+                        <li>Analytics & reporting</li>
+                        <li>Strategy adjustments</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <h3>Phase 3: Bethesda Expansion</h3>
+                    <div class="price">$3,500</div>
+                    <ul>
+                        <li>Separate brand setup</li>
+                        <li>Premium service positioning</li>
+                        <li>Expert Reacts video series</li>
+                        <li>SEO foundation</li>
+                        <li>Client case studies</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

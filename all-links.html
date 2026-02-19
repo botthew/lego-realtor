@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LEGO Realtor | All Resources & Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lego-red: #C91A09;
+            --lego-yellow: #FFD500;
+            --lego-blue: #0055BF;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-600: #666666;
+            --gray-800: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--gray-100);
+            color: var(--gray-800);
+            line-height: 1.6;
+            padding: 60px 24px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        h1 span {
+            color: var(--lego-red);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .section h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--lego-yellow);
+        }
+
+        .link-list {
+            list-style: none;
+        }
+
+        .link-list li {
+            margin-bottom: 12px;
+        }
+
+        .link-list a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: var(--gray-100);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--gray-800);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .link-list a:hover {
+            background: var(--lego-red);
+            color: var(--white);
+            transform: translateX(4px);
+        }
+
+        .link-list .icon {
+            font-size: 1.25rem;
+        }
+
+        .section-count {
+            background: var(--lego-blue);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .link-list a {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The <span>LEGO</span> Realtor</h1>
+        <p class="subtitle">All Resources, Links & Pages</p>
+
+        <!-- Main Pages -->
+        <section class="section">
+            <h2>Main Pages</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="https://botthew.github.io/lego-realtor/" target="_blank">
+                        <span class="icon">🏠</span>
+                        Homepage Gallery
+                        <span class="section-count">Start Here</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="gallery.html" target="_blank">
+                        <span class="icon">🎨</span>
+                        Brand Assets Gallery
+                    </a>
+                </li>
+                <li>
+                    <a href="lego-buttons.html" target="_blank">
+                        <span class="icon">🔘</span>
+                        LEGO Button Components
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Website Concepts -->
+        <section class="section">
+            <h2>Website Concepts</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="concept1-playful-bold.html" target="_blank">
+                        <span class="icon">🎯</span>
+                        Concept 1: Playful Bold
+                    </a>
+                </li>
+                <li>
+                    <a href="concept2-modern-clean.html" target="_blank">
+                        <span class="icon">✨</span>
+                        Concept 2: Modern Clean
+                    </a>
+                </li>
+                <li>
+                    <a href="concept3-dark-premium.html" target="_blank">
+                        <span class="icon">🌙</span>
+                        Concept 3: Dark Premium
+                    </a>
+                </li>
+                <li>
+                    <a href="concept4-neighborhood-map.html" target="_blank">
+                        <span class="icon">🗺️</span>
+                        Concept 4: Neighborhood Map
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Landing Pages -->
+        <section class="section">
+            <h2>Landing Pages</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="landing-pages/01-dmv-buyer-blueprint.html" target="_blank">
+                        <span class="icon">📘</span>
+                        DMV Buyer Blueprint
+                    </a>
+                </li>
+                <li>
+                    <a href="landing-pages/02-7-days-to-closing.html" target="_blank">
+                        <span class="icon">📋</span>
+                        7 Days to Closing
+                    </a>
+                </li>
+                <li>
+                    <a href="landing-pages/03-neighborhood-hot-sheet.html" target="_blank">
+                        <span class="icon">📊</span>
+                        Neighborhood Hot Sheet
+                    </a>
+                </li>
+                <li>
+                    <a href="landing-pages/04-open-house-survival-guide.html" target="_blank">
+                        <span class="icon">🏠</span>
+                        Open House Survival Guide
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Strategy & Visual Assets -->
+        <section class="section">
+            <h2>Strategy & Visual Assets</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="strategy-visuals/funnel-strategy.html" target="_blank">
+                        <span class="icon">🎯</span>
+                        Content Funnel Strategy
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/botthew/lego-realtor" target="_blank">
+                        <span class="icon">📁</span>
+                        GitHub Repository
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Direct Links to Assets -->
+        <section class="section">
+            <h2>Download Assets</h2>
+            <ul class="link-list">
+                <li>
+                    <a href="the-lego-realtor-logo.png" target="_blank">
+                        <span class="icon">🔵</span>
+                        Primary Logo (PNG)
+                    </a>
+                </li>
+                <li>
+                    <a href="lead-magnets/" target="_blank">
+                        <span class="icon">📚</span>
+                        Lead Magnet Covers Folder
+                    </a>
+                </li>
+                <li>
+                    <a href="content-pillars/" target="_blank">
+                        <span class="icon">📱</span>
+                        Content Pillar Images
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>The LEGO Realtor | DMV Real Estate</p>
+        </footer>
+    </div>
+</body>
+</html>
